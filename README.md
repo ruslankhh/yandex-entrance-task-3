@@ -74,6 +74,6 @@ Cannot GET /graphql
 
 Опечатка в веб-адресе, передаваемом роутеру — вместо `'/graphql'` написано `'/graphgl'`.
 
-https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/index.js#L14
+- https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/index.js#L14
 
 Таким образом, для исправления данной ошибки мы должны передать роутеру правильный адрес `'/graphql'`.
