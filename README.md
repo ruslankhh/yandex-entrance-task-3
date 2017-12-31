@@ -60,9 +60,11 @@ Error: Dialect needs to be explicitly supplied as of v4.0.0
 
 Таким образом, для исправления данной ошибки мы должны передавать в наш конструктор аргумент `password` 3-м по счету, а `options` — 4-м.
 
-### 2. Должно открываться GraphQL IDE
+### 2. Должно открываться GraphQL IDE - http://localhost:3000/graphql/
 
 #### Сообщение об ошибке
+
+При переходе по адресу http://localhost:3000/graphql/:
 
 ```
 Cannot GET /graphql
