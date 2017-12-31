@@ -59,3 +59,19 @@ Error: Dialect needs to be explicitly supplied as of v4.0.0
 - https://github.com/sequelize/sequelize/blob/master/lib/sequelize.js#L174
 
 Таким образом, для исправления данной ошибки мы должны передавать в наш конструктор аргумент `password` 3-м по счету, а `options` — 4-м.
+
+### 2. Должно открываться GraphQL IDE
+
+#### Сообщение об ошибке
+
+```
+Cannot GET /graphql
+```
+
+#### Описание решения
+
+Опечатка в веб-адресе, передаваемом роутеру — вместо `'/graphql'` написано `'/graphgl'`.
+
+https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/index.js#L14
+
+Таким образом, для исправления данной ошибки мы должны передать роутеру правильный адрес `'/graphql'`.
