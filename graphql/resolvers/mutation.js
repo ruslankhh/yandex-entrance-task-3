@@ -15,7 +15,11 @@ module.exports = {
 
   removeUser (root, { id }, context) {
     return models.User.findById(id)
-            .then(user => user.destroy());
+            .then(user => {
+              if (user) {
+                return user.destroy();
+              }
+            });
   },
 
   // Room
@@ -32,7 +36,11 @@ module.exports = {
 
   removeRoom (root, { id }, context) {
     return models.Room.findById(id)
-            .then(room => room.destroy());
+            .then(room => {
+              if (room) {
+                return room.destroy();
+              }
+            });
   },
 
   // Event
@@ -61,15 +69,37 @@ module.exports = {
             });
   },
 
+  addUserToEvent (root, { id, userId }, context) {
+    return models.Event.findById(id)
+            .then(event => {
+              return event.getUsers()
+                .then(users => {
+                  const usersIds = users.map(user => user.dataValues.id);
+                  const isIncluded = usersIds.includes(Number(userId));
+
+                  if (!isIncluded) {
+                    const newUsersIds = usersIds.concat(Number(userId));
+                    return event.setUsers(newUsersIds);
+                  }
+                })
+                .then(() => event);
+            });
+  },
+
   changeEventRoom (root, { id, roomId }, context) {
     return models.Event.findById(id)
             .then(event => {
-              event.setRoom(id);
+              return event.setRoom(roomId)
+                .then(() => event);
             });
   },
 
   removeEvent (root, { id }, context) {
     return models.Event.findById(id)
-            .then(event => event.destroy());
+            .then(event => {
+              if (event) {
+                return event.destroy();
+              }
+            });
   }
 };
