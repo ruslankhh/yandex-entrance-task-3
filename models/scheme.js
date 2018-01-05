@@ -23,7 +23,5 @@ module.exports = function (sequelize) {
   User.belongsToMany(Event, { through: 'Events_Users' });
   Event.belongsTo(Room);
 
-  return {
-    Room, Event, User
-  };
+  return { Room, Event, User };
 };

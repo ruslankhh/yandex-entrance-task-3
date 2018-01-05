@@ -15,7 +15,7 @@ const schema = makeExecutableSchema({
 
 router.use(graphqlHTTP({
   schema,
-  graphiql: true,
+  graphiql: true
 }));
 
 module.exports = router;
