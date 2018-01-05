@@ -80,7 +80,7 @@ Cannot GET /graphql
 
 ### 3. Все запросы на получение или изменения данных через graphql должны работать корректно.
 
-#### Сообщения об ошибке или некорректный вывод данных
+#### Сообщения об ошибке или некорректный вывод данных и описания решений
 
 1. При передаче запроса в GraphQL IDE со следующими параметрами:
 
@@ -149,6 +149,12 @@ Cannot GET /graphql
 
     </details>
 
+    **Описание решения**:
+
+    В инпуте `UserInput` нехватает параметра `avatarUrl`. Для решения проблемы, добавим этот параметр.
+
+    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/typeDefs.js#L11
+
 2. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
@@ -204,6 +210,13 @@ Cannot GET /graphql
 
     </details>
 
+    **Описание решения**:
+
+    Методы `users` и `room` класса `Event` ничего не возвращают. Для решения проблемы, добавим возрат данных в этих методах.
+
+    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/index.js#L14
+    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/index.js#L17
+
 3. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
@@ -254,6 +267,13 @@ Cannot GET /graphql
     ```
 
     </details>
+
+    **Описание решения**:
+
+    Статический метод `findAll` класса `Model` принимает в качестве аргументов только один объект `options`. А мы, при вызове метода `events`, вместо этого передаём туда псевдомассив `arguments`, который при этом является неопределённым. Для решения проблемы, будем передавать в качестве `options` пустой объект, как это делается в `users` и `rooms`.
+
+    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L8
+    - https://github.com/sequelize/sequelize/blob/master/lib/model.js#L1496
 
 4. При передаче запроса в GraphQL IDE со следующими параметрами:
 
@@ -314,6 +334,8 @@ Cannot GET /graphql
 
     </details>
 
+    **Описание решения**: решено в п. 1.
+
 5. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
@@ -367,6 +389,8 @@ Cannot GET /graphql
 
     </details>
 
+    **Описание решения**: решено в п. 1.
+
 6. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
@@ -419,6 +443,8 @@ Cannot GET /graphql
     ```
 
     </details>
+
+    **Описание решения**: решено в п. 1.
 
 7. При передаче запроса в GraphQL IDE со следующими параметрами:
 
@@ -476,6 +502,8 @@ Cannot GET /graphql
 
     </details>
 
+    **Описание решения**: решено в п. 1.
+
 8. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
@@ -531,6 +559,12 @@ Cannot GET /graphql
 
     </details>
 
+    **Описание решения**:
+
+    При попытке удаления элемента, которого нет, возникает ошибка вызова метода `destroy` соответствующего класса. Для решения проблемы, добавим в метод `removeUser` проверку на наличие данного элемента.
+
+    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L18
+
 9. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
@@ -585,6 +619,10 @@ Cannot GET /graphql
     ```
 
     </details>
+
+    **Описание решения**: аналогично п. 8.
+
+    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L35
 
 10. При передаче запроса в GraphQL IDE со следующими параметрами:
 
@@ -647,6 +685,8 @@ Cannot GET /graphql
 
     </details>
 
+    **Описание решения**: решено в п. 2.
+
 11. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
@@ -707,6 +747,8 @@ Cannot GET /graphql
 
     </details>
 
+    **Описание решения**: решено в п. 2.
+
 12. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
@@ -763,6 +805,8 @@ Cannot GET /graphql
 
     </details>
 
+    **Описание решения**: решено в п. 2.
+
 13. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
@@ -811,6 +855,13 @@ Cannot GET /graphql
 
     </details>
 
+    **Описание решения**:
+
+    У нас нет метода `addUserToEvent` у класса `Mutation`, хотя мы его определили. Для решения проблемы, добавим этот метод по аналогии с методом `removeUserFromEvent`, но с учетом определённых нюансов. Нужна проверка на наличие `user` в этом `event`, в случае его отсутсвия, добавлять его и возвращать `event`, в обратном случае — только возвращать `event`.
+
+    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L56
+    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/typeDefs.js#L70
+
 14. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
@@ -858,6 +909,12 @@ Cannot GET /graphql
     ```
 
     </details>
+
+    **Описание решения**:
+
+    Эта проблема похожа с п. 13. Только у нас есть метод `changeEventRoom` у класса `Mutation`. Но он не возращает нам `event`, как должен. Для решения проблемы, добавим возрат `event` в этом методе, а в метод `setRoom` будем передавать не `id`, а `roomId`.
+
+    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L67
 
 15. При передаче запроса в GraphQL IDE со следующими параметрами:
 
@@ -913,6 +970,8 @@ Cannot GET /graphql
     ```
 
     </details>
+
+    **Описание решения**: решено в п. 2.
 
 16. При передаче запроса в GraphQL IDE со следующими параметрами:
 
@@ -975,55 +1034,6 @@ Cannot GET /graphql
 
     </details>
 
-#### Описания решений
-
-1. В инпуте `UserInput` нехватает параметра `avatarUrl`. Для решения проблемы, добавим этот параметр.
-
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/typeDefs.js#L11
-
-2. Методы `users` и `room` класса `Event` ничего не возвращают. Для решения проблемы, добавим возрат данных в этих методах.
-
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/index.js#L14
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/index.js#L17
-
-3. Статический метод `findAll` класса `Model` принимает в качестве аргументов только один объект `options`. А мы, при вызове метода `events`, вместо этого передаём туда псевдомассив `arguments`, который при этом является неопределённым. Для решения проблемы, будем передавать в качестве `options` пустой объект, как это делается в `users` и `rooms`.
-
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L8
-    - https://github.com/sequelize/sequelize/blob/master/lib/model.js#L1496
-
-4. Решено в п. 1.
-
-5. Решено в п. 1.
-
-6. Решено в п. 1.
-
-7. Решено в п. 1.
-
-8. При попытке удаления элемента, которого нет, возникает ошибка вызова метода `destroy` соответствующего класса. Для решения проблемы, добавим в метод `removeUser` проверку на наличие данного элемента.
-
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L18
-
-9. Аналогично п. 8.
-
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L35
-
-10. Решено в п. 2.
-
-11. Решено в п. 2.
-
-12. Решено в п. 2.
-
-13. У нас нет метода `addUserToEvent` у класса `Mutation`, хотя мы его определили. Для решения проблемы, добавим этот метод по аналогии с методом `removeUserFromEvent`, но с учетом определённых нюансов. Нужна проверка на наличие `user` в этом `event`, в случае его отсутсвия, добавлять его и возвращать `event`, в обратном случае — только возвращать `event`.
-
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L56
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/typeDefs.js#L70
-
-14. Эта проблема похожа с п. 13. Только у нас есть метод `changeEventRoom` у класса `Mutation`. Но он не возращает нам `event`, как должен. Для решения проблемы, добавим возрат `event` в этом методе, а в метод `setRoom` будем передавать не `id`, а `roomId`.
-
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L67
-
-15. Решено в п. 2.
-
-16. Аналогично п. 8.
+    **Описание решения**: аналогично п. 8.
 
     - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L73
