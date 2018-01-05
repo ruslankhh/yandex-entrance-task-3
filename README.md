@@ -1131,3 +1131,9 @@ Cannot GET /graphql
 4. Здесь можно обойтись без `push`-ей. Лучше не изменять данные, а создавать новые, так нам будет легче сохранить порядок и контроль.
 
     - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/create-mock-data.js#L81
+
+5. Здесь можно не делать лишнюю функцию с её последующим вызовом, а сразу передать объект, как в примере документации graphql-tools.
+
+    - https://github.com/apollographql/graphql-tools#example
+    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/index.js#L6
+    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/routes.js#L13
