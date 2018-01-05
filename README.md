@@ -1137,3 +1137,40 @@ Cannot GET /graphql
     - https://github.com/apollographql/graphql-tools#example
     - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/index.js#L6
     - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/routes.js#L13
+
+## 5. Все должно быть в едином codestyle
+
+1. С помощью утилиты semistandard проверил и исправил следующие замечания:
+
+    ```
+    semistandard: Semicolons For All! (https://github.com/Flet/semistandard)
+    semistandard: Run `semistandard --fix` to automatically fix some problems.
+      /Users/ruslankhh/github/entrance-task-1/graphql/resolvers/query.js:4:1: Expected indentation of 2 spaces but found 0.
+      /Users/ruslankhh/github/entrance-task-1/graphql/resolvers/query.js:5:5: Expected indentation of 2 spaces but found 4.
+      /Users/ruslankhh/github/entrance-task-1/graphql/resolvers/query.js:6:3: Expected indentation of 0 spaces but found 2.
+      /Users/ruslankhh/github/entrance-task-1/graphql/resolvers/query.js:10:1: Expected indentation of 2 spaces but found 0.
+      /Users/ruslankhh/github/entrance-task-1/graphql/resolvers/query.js:11:5: Expected indentation of 2 spaces but found 4.
+      /Users/ruslankhh/github/entrance-task-1/graphql/resolvers/query.js:12:3: Expected indentation of 0 spaces but found 2.
+      /Users/ruslankhh/github/entrance-task-1/graphql/resolvers/query.js:16:1: Expected indentation of 2 spaces but found 0.
+      /Users/ruslankhh/github/entrance-task-1/graphql/resolvers/query.js:17:5: Expected indentation of 2 spaces but found 4.
+      /Users/ruslankhh/github/entrance-task-1/graphql/resolvers/query.js:18:3: Expected indentation of 0 spaces but found 2.
+      /Users/ruslankhh/github/entrance-task-1/graphql/routes.js:18:17: Unexpected trailing comma.
+      /Users/ruslankhh/github/entrance-task-1/index.js:13:26: Missing semicolon.
+    ```
+
+2. Выровнял отступы, убрал пустые строки и ненужные комментарии:
+
+    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/index.js
+    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js
+
+3. Сделал отсупы в 2 пробела в тексте:
+
+    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/typeDefs.js
+
+4. Переписал вывод объекта в одну строчку:
+
+    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/models/scheme.js#L26
+
+5. Убрал лишний отступ:
+
+    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/pages/controllers.js#L10
