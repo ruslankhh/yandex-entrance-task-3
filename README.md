@@ -34,8 +34,8 @@ npm run reset-db
 
 ```
 Error: Dialect needs to be explicitly supplied as of v4.0.0
-    at new Sequelize (/Users/ruslankhh/github/entrance-task-1/node_modules/sequelize/lib/sequelize.js:175:13)
-    at Object.<anonymous> (/Users/ruslankhh/github/entrance-task-1/models/index.js:7:19)
+    at new Sequelize (/Users/ruslankhh/github/yandex-entrance-task-1/node_modules/sequelize/lib/sequelize.js:175:13)
+    at Object.<anonymous> (/Users/ruslankhh/github/yandex-entrance-task-1/models/index.js:7:19)
     ...
 ```
 
@@ -1145,17 +1145,17 @@ Cannot GET /graphql
     ```
     semistandard: Semicolons For All! (https://github.com/Flet/semistandard)
     semistandard: Run `semistandard --fix` to automatically fix some problems.
-      /Users/ruslankhh/github/entrance-task-1/graphql/resolvers/query.js:4:1: Expected indentation of 2 spaces but found 0.
-      /Users/ruslankhh/github/entrance-task-1/graphql/resolvers/query.js:5:5: Expected indentation of 2 spaces but found 4.
-      /Users/ruslankhh/github/entrance-task-1/graphql/resolvers/query.js:6:3: Expected indentation of 0 spaces but found 2.
-      /Users/ruslankhh/github/entrance-task-1/graphql/resolvers/query.js:10:1: Expected indentation of 2 spaces but found 0.
-      /Users/ruslankhh/github/entrance-task-1/graphql/resolvers/query.js:11:5: Expected indentation of 2 spaces but found 4.
-      /Users/ruslankhh/github/entrance-task-1/graphql/resolvers/query.js:12:3: Expected indentation of 0 spaces but found 2.
-      /Users/ruslankhh/github/entrance-task-1/graphql/resolvers/query.js:16:1: Expected indentation of 2 spaces but found 0.
-      /Users/ruslankhh/github/entrance-task-1/graphql/resolvers/query.js:17:5: Expected indentation of 2 spaces but found 4.
-      /Users/ruslankhh/github/entrance-task-1/graphql/resolvers/query.js:18:3: Expected indentation of 0 spaces but found 2.
-      /Users/ruslankhh/github/entrance-task-1/graphql/routes.js:18:17: Unexpected trailing comma.
-      /Users/ruslankhh/github/entrance-task-1/index.js:13:26: Missing semicolon.
+      /Users/ruslankhh/github/yandex-entrance-task-1/graphql/resolvers/query.js:4:1: Expected indentation of 2 spaces but found 0.
+      /Users/ruslankhh/github/yandex-entrance-task-1/graphql/resolvers/query.js:5:5: Expected indentation of 2 spaces but found 4.
+      /Users/ruslankhh/github/yandex-entrance-task-1/graphql/resolvers/query.js:6:3: Expected indentation of 0 spaces but found 2.
+      /Users/ruslankhh/github/yandex-entrance-task-1/graphql/resolvers/query.js:10:1: Expected indentation of 2 spaces but found 0.
+      /Users/ruslankhh/github/yandex-entrance-task-1/graphql/resolvers/query.js:11:5: Expected indentation of 2 spaces but found 4.
+      /Users/ruslankhh/github/yandex-entrance-task-1/graphql/resolvers/query.js:12:3: Expected indentation of 0 spaces but found 2.
+      /Users/ruslankhh/github/yandex-entrance-task-1/graphql/resolvers/query.js:16:1: Expected indentation of 2 spaces but found 0.
+      /Users/ruslankhh/github/yandex-entrance-task-1/graphql/resolvers/query.js:17:5: Expected indentation of 2 spaces but found 4.
+      /Users/ruslankhh/github/yandex-entrance-task-1/graphql/resolvers/query.js:18:3: Expected indentation of 0 spaces but found 2.
+      /Users/ruslankhh/github/yandex-entrance-task-1/graphql/routes.js:18:17: Unexpected trailing comma.
+      /Users/ruslankhh/github/yandex-entrance-task-1/index.js:13:26: Missing semicolon.
     ```
 
 2. Выровнял отступы, убрал пустые строки и ненужные комментарии:
