@@ -278,6 +278,64 @@ Cannot GET /graphql
 4. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
+    query rooms {
+      rooms {
+        id
+        title
+        capacity
+        floor
+      }
+    }
+    ```
+
+    Выдаётся неполный список комнат.
+
+    <details>
+
+    ```json
+    {
+      "data": {
+        "rooms": [
+          {
+            "id": "2",
+            "title": "Деньги",
+            "capacity": 4,
+            "floor": 2
+          },
+          {
+            "id": "3",
+            "title": "Карты",
+            "capacity": 4,
+            "floor": 2
+          },
+          {
+            "id": "4",
+            "title": "Ствола",
+            "capacity": 2,
+            "floor": 2
+          },
+          {
+            "id": "5",
+            "title": "14",
+            "capacity": 6,
+            "floor": 3
+          }
+        ]
+      }
+    }
+    ```
+
+    </details>
+
+    **Описание решения**:
+
+    Статический метод `findAll` класса `Model` принимает в качестве опций объект `{ offset: 1 }`, который задаёт смещение на 1. Для решения проблемы, нужно убрать эту опцию, вместо неё передавать пустой объект.
+
+    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L20
+
+5. При передаче запроса в GraphQL IDE со следующими параметрами:
+
+    ```graphql
     mutation createUser ($input: UserInput!) {
       createUser (input: $input) {
         id
@@ -336,7 +394,7 @@ Cannot GET /graphql
 
     **Описание решения**: решено в п. 1.
 
-5. При передаче запроса в GraphQL IDE со следующими параметрами:
+6. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
     mutation createUser ($input: UserInput!) {
@@ -391,7 +449,7 @@ Cannot GET /graphql
 
     **Описание решения**: решено в п. 1.
 
-6. При передаче запроса в GraphQL IDE со следующими параметрами:
+7. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
     mutation updateUser ($input: UserInput!) {
@@ -446,7 +504,7 @@ Cannot GET /graphql
 
     **Описание решения**: решено в п. 1.
 
-7. При передаче запроса в GraphQL IDE со следующими параметрами:
+8. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
     mutation removeUser ($id: ID!) {
@@ -504,7 +562,7 @@ Cannot GET /graphql
 
     **Описание решения**: решено в п. 1.
 
-8. При передаче запроса в GraphQL IDE со следующими параметрами:
+9. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
     mutation removeUser ($id: ID!) {
@@ -565,7 +623,7 @@ Cannot GET /graphql
 
     - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L18
 
-9. При передаче запроса в GraphQL IDE со следующими параметрами:
+10. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
     mutation removeRoom ($id: ID!) {
@@ -620,11 +678,11 @@ Cannot GET /graphql
 
     </details>
 
-    **Описание решения**: аналогично п. 8.
+    **Описание решения**: аналогично п. 9.
 
     - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L35
 
-10. При передаче запроса в GraphQL IDE со следующими параметрами:
+11. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
     mutation createEvent ($input: EventInput!, $usersIds: [ID], $roomId: ID! ) {
@@ -687,7 +745,7 @@ Cannot GET /graphql
 
     **Описание решения**: решено в п. 2.
 
-11. При передаче запроса в GraphQL IDE со следующими параметрами:
+12. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
     mutation updateEvent ($id: ID!, $input: EventInput!) {
@@ -749,7 +807,7 @@ Cannot GET /graphql
 
     **Описание решения**: решено в п. 2.
 
-12. При передаче запроса в GraphQL IDE со следующими параметрами:
+13. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
     mutation removeUserFromEvent ($id: ID!, $userId: ID!) {
@@ -807,7 +865,7 @@ Cannot GET /graphql
 
     **Описание решения**: решено в п. 2.
 
-13. При передаче запроса в GraphQL IDE со следующими параметрами:
+14. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
     mutation addUserToEvent ($id: ID!, $userId: ID!) {
@@ -862,7 +920,7 @@ Cannot GET /graphql
     - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L56
     - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/typeDefs.js#L70
 
-14. При передаче запроса в GraphQL IDE со следующими параметрами:
+15. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
     mutation changeEventRoom ($id: ID!, $roomId: ID!) {
@@ -912,11 +970,11 @@ Cannot GET /graphql
 
     **Описание решения**:
 
-    Эта проблема похожа с п. 13. Только у нас есть метод `changeEventRoom` у класса `Mutation`. Но он не возращает нам `event`, как должен. Для решения проблемы, добавим возрат `event` в этом методе, а в метод `setRoom` будем передавать не `id`, а `roomId`.
+    Эта проблема похожа на п. 14. Только у нас есть метод `changeEventRoom` у класса `Mutation`. Но он не возращает нам `event`, как должен. Для решения проблемы, добавим возрат `event` в этом методе, а в метод `setRoom` будем передавать не `id`, а `roomId`.
 
     - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L67
 
-15. При передаче запроса в GraphQL IDE со следующими параметрами:
+16. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
     mutation removeEvent ($id: ID!) {
@@ -973,7 +1031,7 @@ Cannot GET /graphql
 
     **Описание решения**: решено в п. 2.
 
-16. При передаче запроса в GraphQL IDE со следующими параметрами:
+17. При передаче запроса в GraphQL IDE со следующими параметрами:
 
     ```graphql
     mutation removeEvent ($id: ID!) {
@@ -1034,6 +1092,6 @@ Cannot GET /graphql
 
     </details>
 
-    **Описание решения**: аналогично п. 8.
+    **Описание решения**: аналогично п. 9.
 
     - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L73
