@@ -48,7 +48,7 @@ Error: Dialect needs to be explicitly supplied as of v4.0.0
 
 В данном случае передается 3 аргумента, и в качестве 3-го аргумента передается не `password`, как ожидается, а — `options`.
 
-- https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/models/index.js#L7
+- https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/models/index.js#L7
 
 Поэтому `options` передаётся некорректно. Для конструктора аргумент `options` остаётся равным `undefined`. Конструтор записывает в `this.options` значения по умолчанию, и опция `this.options.dialect` остаётся равной `null`.
 
@@ -74,7 +74,7 @@ Cannot GET /graphql
 
 Опечатка в веб-адресе, передаваемом роутеру — вместо `'/graphql'` написано `'/graphgl'`.
 
-- https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/index.js#L14
+- https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/index.js#L14
 
 Таким образом, для исправления данной ошибки мы должны передать роутеру правильный адрес `'/graphql'`.
 
@@ -153,7 +153,7 @@ Cannot GET /graphql
 
     В инпуте `UserInput` нехватает параметра `avatarUrl`. Для решения проблемы, добавим этот параметр.
 
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/typeDefs.js#L11
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/typeDefs.js#L11
 
 2. При передаче запроса в GraphQL IDE со следующими параметрами:
 
@@ -214,8 +214,8 @@ Cannot GET /graphql
 
     Методы `users` и `room` класса `Event` ничего не возвращают. Для решения проблемы, добавим возрат данных в этих методах.
 
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/index.js#L14
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/index.js#L17
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/index.js#L14
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/index.js#L17
 
 3. При передаче запроса в GraphQL IDE со следующими параметрами:
 
@@ -272,7 +272,7 @@ Cannot GET /graphql
 
     Статический метод `findAll` класса `Model` принимает в качестве аргументов только один объект `options`. А мы, при вызове метода `events`, вместо этого передаём туда псевдомассив `arguments`, который при этом является неопределённым. Для решения проблемы, будем передавать в качестве `options` пустой объект, как это делается в `users` и `rooms`.
 
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L8
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L8
     - https://github.com/sequelize/sequelize/blob/master/lib/model.js#L1496
 
 4. При передаче запроса в GraphQL IDE со следующими параметрами:
@@ -331,7 +331,7 @@ Cannot GET /graphql
 
     Статический метод `findAll` класса `Model` принимает в качестве опций объект `{ offset: 1 }`, который задаёт смещение на 1. Для решения проблемы, нужно убрать эту опцию, вместо неё передавать пустой объект.
 
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L20
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L20
 
 5. При передаче запроса в GraphQL IDE со следующими параметрами:
 
@@ -621,7 +621,7 @@ Cannot GET /graphql
 
     При попытке удаления элемента, которого нет, возникает ошибка вызова метода `destroy` соответствующего класса. Для решения проблемы, добавим в метод `removeUser` проверку на наличие данного элемента.
 
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L18
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L18
 
 10. При передаче запроса в GraphQL IDE со следующими параметрами:
 
@@ -680,7 +680,7 @@ Cannot GET /graphql
 
     **Описание решения**: аналогично п. 9.
 
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L35
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L35
 
 11. При передаче запроса в GraphQL IDE со следующими параметрами:
 
@@ -917,8 +917,8 @@ Cannot GET /graphql
 
     У нас нет метода `addUserToEvent` у класса `Mutation`, хотя мы его определили. Для решения проблемы, добавим этот метод по аналогии с методом `removeUserFromEvent`, но с учетом определённых нюансов. Нужна проверка на наличие `user` в этом `event`, в случае его отсутсвия, добавлять его и возвращать `event`, в обратном случае — только возвращать `event`.
 
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L56
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/typeDefs.js#L70
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L56
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/typeDefs.js#L70
 
 15. При передаче запроса в GraphQL IDE со следующими параметрами:
 
@@ -972,7 +972,7 @@ Cannot GET /graphql
 
     Эта проблема похожа на п. 14. Только у нас есть метод `changeEventRoom` у класса `Mutation`. Но он не возращает нам `event`, как должен. Для решения проблемы, добавим возрат `event` в этом методе, а в метод `setRoom` будем передавать не `id`, а `roomId`.
 
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L67
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L67
 
 16. При передаче запроса в GraphQL IDE со следующими параметрами:
 
@@ -1094,49 +1094,49 @@ Cannot GET /graphql
 
     **Описание решения**: аналогично п. 9.
 
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L73
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L73
 
 ## 4. Не должно быть лишнего кода
 
 1. Неиспользуемые аргументы не нужны, `args` и `contects` (а в некоторых случаях и `root`) не нужны.
 
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L5
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L9
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L16
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L22
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L26
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L33
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L39
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L49
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L56
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L64
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L71
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L7
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L13
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L19
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L5
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L9
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L16
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L22
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L26
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L33
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L39
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L49
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L56
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L64
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js#L71
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L7
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L13
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L19
 
 
 2. Метод `findAll` принимает только один аргумент `options`, так что никакой `contects` не нужно ему передавать, он всё равно будет проигнорирован.
 
 
     - https://github.com/sequelize/sequelize/blob/master/lib/model.js#L1496
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L8
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L14
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L20
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L8
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L14
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/query.js#L20
 
 3. Здесь можно обойтись стрелочной функцией.
 
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/create-mock-data.js#L80
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/create-mock-data.js#L80
 
 4. Здесь можно обойтись без `push`-ей. Лучше не изменять данные, а создавать новые, так нам будет легче сохранить порядок и контроль.
 
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/create-mock-data.js#L81
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/create-mock-data.js#L81
 
 5. Здесь можно не делать лишнюю функцию с её последующим вызовом, а сразу передать объект, как в примере документации graphql-tools.
 
     - https://github.com/apollographql/graphql-tools#example
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/index.js#L6
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/routes.js#L13
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/index.js#L6
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/routes.js#L13
 
 ## 5. Все должно быть в едином codestyle
 
@@ -1160,17 +1160,17 @@ Cannot GET /graphql
 
 2. Выровнял отступы, убрал пустые строки и ненужные комментарии:
 
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/index.js
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/index.js
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/resolvers/mutation.js
 
 3. Сделал отсупы в 2 пробела в тексте:
 
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/typeDefs.js
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/graphql/typeDefs.js
 
 4. Переписал вывод объекта в одну строчку:
 
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/models/scheme.js#L26
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/models/scheme.js#L26
 
 5. Убрал лишний отступ:
 
-    - https://github.com/ruslankhh/entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/pages/controllers.js#L10
+    - https://github.com/ruslankhh/yandex-entrance-task-1/blob/a0c0edd468af5817071a87a8727318b5f321f824/pages/controllers.js#L10
