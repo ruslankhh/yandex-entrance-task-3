@@ -40,10 +40,21 @@
 
 ```
 npm i
+npm run build
+npm start
+```
+
+Для разработки (запускается параллельно):
+
+```
+npm start
+```
+```
 npm run dev
 ```
 
 Для сброса данных в базе:
+
 ```
 npm run reset-db
 ```
