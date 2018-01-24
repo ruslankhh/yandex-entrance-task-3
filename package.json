@@ -1,25 +1,36 @@
 {
-  "name": "shri-2018",
+  "name": "shri-2018-3",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "author": "",
+  "author": {
+    "name": "Ruslan Khusnetdinov",
+    "email": "ruslankhh@gmail.com"
+  },
   "license": "MIT",
   "engines": {
     "node": ">=8.4.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "semistandard",
+    "start": "nodemon index.js",
     "reset-db": "rm -f ./db.sqlite3 && node create-mock-data.js",
-    "dev": "nodemon index.js"
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "express": "^4.15.4",
     "express-graphql": "^0.6.11",
     "graphql": "^0.11.1",
     "graphql-date": "^1.0.3",
     "graphql-tools": "^1.2.1",
+    "react": "^16.2.0",
+    "react-apollo": "^2.0.4",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.0",
     "sequelize": "^4.7.5",
     "sqlite3": "^3.1.9"
   },
