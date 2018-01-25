@@ -47,10 +47,10 @@ npm start
 Для разработки (запускается параллельно):
 
 ```
-npm start
+npm run dev:server
 ```
 ```
-npm run dev
+npm run dev:start
 ```
 
 Для сброса данных в базе:

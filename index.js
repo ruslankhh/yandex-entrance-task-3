@@ -9,8 +9,7 @@ const graphqlRoutes = require('./graphql/routes');
 const app = express();
 
 app.use(bodyParser.json());
-// app.use(express.static(path.join(__dirname, 'build')));
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/', pagesRoutes);
 app.use('/graphql', graphqlRoutes);
