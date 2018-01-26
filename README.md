@@ -7,6 +7,7 @@
 - graphql
 - react
 - apollo-client
+- react-router
 
 ## Задание
 
@@ -82,3 +83,7 @@ npm run reset-db
 ##### Общение с сервером
 
 Для общения с сервером при помощи graphql решил использовать [Apollo client](https://github.com/apollographql/apollo-client). Так как я не особо знаком с graphql, то выбрал первую библиотеку, у которой наиболее подробная документация и есть интерграция с React-ом.
+
+##### Маршрутизация
+
+Для маршрутизации выбрал [React Router](https://github.com/ReactTraining/react-router), что обсловлено выбором React-а.
