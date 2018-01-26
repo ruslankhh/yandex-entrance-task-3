@@ -15,7 +15,7 @@ const client = new ApolloClient({
 });
 
 const AppWithData = graphql(APP_QUERY)(({ data }) => (
-  <App data={{ ...data }} />
+  <App data={data} />
 ));
 
 ReactDOM.render(
