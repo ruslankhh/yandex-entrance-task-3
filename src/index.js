@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 
 import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-client-preset';
 import { ApolloProvider, graphql } from 'react-apollo';
+
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
 
 import { APP_QUERY } from './query/query';
 
