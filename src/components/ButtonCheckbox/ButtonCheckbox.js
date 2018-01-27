@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
+import Block from '../../helpers/BEMHelper';
 
 class ButtonCheckbox extends Component {
   render() {
-    const className = "button-checkbox";
-    const mods = this.props.mods ? [].concat(this.props.mods)
-      .map(mod => `${className}--${mod}`) : '';
-    const mix = this.props.mix ? [].concat(this.props.mix) : '';
-    const classNames = [className, ...mods, ...mix];
+    const { block, elem } = new Block(this.props);
 
     return (
-      <div className={classNames.join(' ')}>
-        <input className={`${className}__checkbox`} id={this.props.id} name={this.props.id} type="checkbox" checked={this.props.checked} hidden />
-        <div className={`${className}__content`}>
+      <div className={block('button-checkbox')}>
+        <input
+          className={elem('checkbox')}
+          id={this.props.id}
+          name={this.props.id}
+          type="checkbox"
+          checked={this.props.checked}
+          hidden
+        />
+        <div className={elem('content')}>
           {this.props.children}
         </div>
-        <label className={`${className}__button`} htmlFor={this.props.id}>
-          <div className={`${className}__button-text`}></div>
+        <label className={elem('button')} htmlFor={this.props.id}>
+          <div className={elem('button-text')}></div>
         </label>
       </div>
     );

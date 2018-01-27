@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
+import Block from '../../helpers/BEMHelper';
+import { roomCapacityTemplate } from '../../helpers/stringHelper';
 
 class RoomItem extends Component {
   render() {
-    const className = "room-item";
-    const mods = this.props.mods ? [].concat(this.props.mods)
-      .map(mod => `${className}--${mod}`) : '';
-    const mix = this.props.mix ? [].concat(this.props.mix) : '';
-    const classNames = [className, ...mods, ...mix];
+    const { block, elem } = new Block(this.props);
+    const capacityText = roomCapacityTemplate`${this.props.capacity}`;
 
     return (
-      <div className={classNames.join(' ')} id={`room-${this.props.id}`} >
-        <div className={`${className}__body`}>
-          <div className={`${className}__title`}>{this.props.title}</div>
-          <div className={`${className}__text`}>
-            <span className={`${className}__capacity`}>{this.props.capacity}</span>
-            <span className={`${className}__time`}>{this.props.time}</span>
-            <span className={`${className}__room`}>{this.props.room}</span>
-            <span className={`${className}__text-separator`}> · </span>
-            <span className={`${className}__floor`}>{this.props.floor}</span>
+      <div className={block('room-item')} id={`room-${this.props.id}`} >
+        <div className={elem('body')}>
+          <div className={elem('title')}>{this.props.title}</div>
+          <div className={elem('text')}>
+            <span className={elem('capacity')}>{capacityText}</span>
+            <span className={elem('time')}>{this.props.time}</span>
+            <span className={elem('room')}>{this.props.room}</span>
+            <span className={elem('text-separator')}> · </span>
+            <span className={elem('floor')}>{this.props.floor}</span>
           </div>
         </div>
-        <div className={`${className}__content`}>
+        <div className={elem('content')}>
           {this.props.children}
         </div>
       </div>

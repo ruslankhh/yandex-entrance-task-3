@@ -15,12 +15,14 @@ class Main extends Component {
     }
 
     return (
-      <main className="body">
-        <Switch>
-          <Route exact path="/" component={EventDiagram}/>
-          <Route exact path="/event" component={EventForm}/>
-        </Switch>
-      </main>
+      <Switch>
+        <Route exact path="/" render={() =>
+          <EventDiagram data={this.props.data} />
+        }/>
+        <Route exact path="/event" render={() =>
+          <EventForm data={this.props.data} />
+        }/>
+      </Switch>
     );
   }
 }

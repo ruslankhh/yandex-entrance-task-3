@@ -10,7 +10,7 @@ class Header extends Component {
       <header className="header">
         <img className="image" src={logo} alt="Яндекс.Переговорки"/>
         <Route exact path="/" render={() => (
-          <Button mods={['type-primary', 'size-md']}>Создать встречу</Button>
+          <Button mods={{ type: 'primary', size: 'md' }}>Создать встречу</Button>
         )}/>
       </header>
     );

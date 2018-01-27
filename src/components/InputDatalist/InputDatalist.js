@@ -1,26 +1,18 @@
 import React, { Component } from 'react';
+import Block from '../../helpers/BEMHelper';
 
 class InputDatalist extends Component {
   render() {
-    const className = "input-datalist";
-    const mods = this.props.mods ? [].concat(this.props.mods)
-      .map(mod => `${className}--${mod}`) : '';
-    const mix = this.props.mix ? [].concat(this.props.mix) : '';
-    const classNames = [className, ...mods, ...mix];
-
-    const controlClassName = `${className}__control`;
-    const controlMods = this.props.mods ? [].concat(this.props.mods)
-      .map(mod => `${controlClassName}--${mod}`) : '';
-    const controlClassNames = [controlClassName, ...controlMods];
+    const { block, elem } = new Block(this.props);
 
     return (
-      <div className={classNames.join(' ')}>
-        <label className={`${className}__label`} htmlFor={this.props.id}>{this.props.label}</label>
-        <div className={`${className}__container`}>
+      <div className={block('input-datalist')}>
+        <label className={elem('label')} htmlFor={this.props.id}>{this.props.label}</label>
+        <div className={elem('container')}>
           <input
             id={this.props.id}
             name={this.props.id}
-            className={controlClassNames.join(' ')}
+            className={elem('control', this.props)}
             type={this.props.type}
             placeholder={this.props.placeholder}
             value={this.props.value}

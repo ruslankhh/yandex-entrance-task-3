@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
+import Block from '../../helpers/BEMHelper';
 
 class Button extends Component {
   render() {
-    const className = "button";
-    const mods = this.props.mods ? [].concat(this.props.mods)
-      .map(mod => `${className}--${mod}`) : '';
-    const mix = this.props.mix ? [].concat(this.props.mix) : '';
-    const classNames = [className, ...mods, ...mix];
+    const { block, elem } = new Block(this.props);
 
     return (
-      <button className={classNames.join(' ')} id={this.props.id} type={this.props.type}>
-        <div className={`${className}__text`}>
+      <button className={block('button')} id={this.props.id} type={this.props.type}>
+        <div className={elem('text')}>
           {this.props.children}
         </div>
       </button>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './styles/app.css';
 
 import Footer from './components/Footer/Footer';
@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="app">
+        <div className="app page--index">
           <Header />
           <Main data={this.props.data} />
           <Footer />

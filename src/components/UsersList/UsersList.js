@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
+import Block from '../../helpers/BEMHelper';
 
 import UserItem from './../UserItem/UserItem';
 
 class UsersList extends Component {
   render() {
-    const className = "users-list";
-    const mods = this.props.mods ? [].concat(this.props.mods)
-      .map(mod => `${className}--${mod}`) : '';
-    const mix = this.props.mix ? [].concat(this.props.mix) : '';
-    const classNames = [className, ...mods, ...mix];
+    const { block, elem } = new Block(this.props);
 
     return (
-      <div className={classNames.join(' ')}>
+      <div className={block('users-list')}>
         {this.props.users ? this.props.users.map(user => (
           <UserItem
             key={user.id}
-            mix={`${className}__item`}
+            mix={elem('item')}
             id={user.id}
             name={user.login}
             image={user.avatarUrl}

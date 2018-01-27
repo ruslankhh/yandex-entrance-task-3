@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
+import Block from '../../helpers/BEMHelper';
 
 import Button from './../Button/Button';
 
 class UserItem extends Component {
   render() {
-    const className = "user-item";
-    const mods = this.props.mods ? [].concat(this.props.mods)
-      .map(mod => `${className}--${mod}`) : '';
-    const mix = this.props.mix ? [].concat(this.props.mix) : '';
-    const classNames = [className, ...mods, ...mix];
+    const { block, elem } = new Block(this.props);
+    const imageStyles = { backgroundImage: `url(${this.props.image})` };
 
     return (
-      <div className={classNames.join(' ')} id={`user-${this.props.id}`} >
-        <div className={`${className}__image`} style={{ backgroundImage: `url(${this.props.image})` }}></div>
-        <div className={`${className}__name`}>{this.props.name}</div>
+      <div className={block('user-item')} id={`user-${this.props.id}`} >
+        <div className={elem('image')} style={imageStyles}></div>
+        <div className={elem('name')}>{this.props.name}</div>
         <Button
-          mods={['icon-close', 'size-xs', 'circle', 'transparent']}
-          mix={`${className}__button`}
+          mods={{ icon: 'close', size: 'xs', circle: true, transparent: true }}
+          mix={elem('button')}
         />
       </div>
     );
