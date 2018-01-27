@@ -1,3 +1,5 @@
+// BEMHelper
+
 class Block {
   constructor(props) {
     this.props = props;
@@ -39,6 +41,10 @@ class Block {
 
     return Block.compiler(className, props, classes);
   }
+};
+
+export const createBlock = (props) => {
+  return new Block(props);
 };
 
 export default Block;
