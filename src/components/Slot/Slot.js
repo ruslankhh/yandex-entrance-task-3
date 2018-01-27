@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { createBlock } from '../../helpers/BEMHelper';
 
 import Button from './../Button/Button';
+import EventItem from './../EventItem/EventItem';
 import Tooltip from './../Tooltip/Tooltip';
 
 class Slot extends Component {
@@ -11,13 +12,15 @@ class Slot extends Component {
     const slotStyles = { width: `${slotWidth}%` };
 
     return (
-      <div className={block('slot')} style={slotStyles}>
+      <div className={block('slot', { mix: 'room-item__slot' })} style={slotStyles}>
         <Button mods={this.props.mods} mix={elem('button')}>
           <div className={elem('button-text')}>+</div>
         </Button>
-        <Tooltip mix={elem('tooltip')}>
-          {this.props.children}
-        </Tooltip>
+        {this.props.event ? (() => (
+          <Tooltip mix={elem('tooltip')}>
+            <EventItem {...this.props.event} />
+          </Tooltip>
+        ))() : ''}
       </div>
     );
   }

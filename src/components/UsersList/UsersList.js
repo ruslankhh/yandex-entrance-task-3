@@ -10,13 +10,7 @@ class UsersList extends Component {
     return (
       <div className={block('users-list')}>
         {this.props.users ? this.props.users.map(user => (
-          <UserItem
-            key={user.id}
-            mix={elem('item')}
-            id={user.id}
-            name={user.login}
-            image={user.avatarUrl}
-          />
+          <UserItem key={user.id} mix={elem('item')} {...user} />
         )) : ''}
       </div>
     );

@@ -19,6 +19,7 @@ class RoomsList extends Component {
               id={room.id}
               title={room.title}
               capacity={room.capacity}
+              events={this.props.events}
             />
           )) : ''}
         </div>

@@ -16,7 +16,7 @@ class EventDiagram extends Component {
             <DatePicker>14 дек · Сегодня</DatePicker>
           </div>
           <div className={elem('sidebar-body')}>
-            <RoomsList rooms={this.props.data.rooms} />
+            <RoomsList rooms={this.props.data.rooms} events={this.props.data.events}/>
           </div>
         </div>
         <div className={elem('main')}>

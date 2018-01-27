@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { createBlock } from '../../helpers/BEMHelper';
 import { createPluralTemplate } from '../../helpers/pluralHelper';
 
+import SlotsList from './../SlotsList/SlotsList';
+
 class RoomItem extends Component {
   render() {
     const { block, elem } = createBlock(this.props);
@@ -21,9 +23,7 @@ class RoomItem extends Component {
             <span className={elem('floor')}>{this.props.floor}</span>
           </div>
         </div>
-        <div className={elem('content')}>
-          {this.props.children}
-        </div>
+        <SlotsList events={this.props.events}/>
       </div>
     );
   }
