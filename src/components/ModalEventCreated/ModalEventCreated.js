@@ -15,7 +15,7 @@ class ModalEventCreated extends Component {
       <Modal className={block('modal')} {...props}>
         <img className={elem('image')} src={emoji2} width="40" height="40" alt="Встреча создана!"/>
         <h3 className={elem('title')}>Встреча создана!</h3>
-        <EventItem mods={{ short: true }}{...this.props.event} />
+        <EventItem mods={{ type: 'short' }} {...this.props.event} />
         <div className={elem('footer', {}, 'grid grid--margin-true grid--center')}>
           <Button mods={{ type: 'primary', size: 'md' }} mix="grid__item">Хорошо</Button>
         </div>

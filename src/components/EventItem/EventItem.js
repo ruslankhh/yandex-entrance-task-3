@@ -20,21 +20,29 @@ class EventItem extends Component {
     const n1 = this.props.users.length - 1;
     const userContent = this.props.users.length > 1 ?
       plural`и ${n1} {участник, участника, участников}` : '';
+    const n2 = this.props.room.floor;
+    const floor = plural`${n2} {этаж, этаж, этаж}`;
+    const type = (this.props.mods && this.props.mods.type) || '';
 
     return (
       <div className={block('event-item')}>
         <div className={elem('title')}>{this.props.title}</div>
         <div className={elem('text')}>
-          <span className={elem('date')}>{`${dateStartString}, `}</span>
+          <span className={elem('date')}>{dateStartString}</span>
+          <span>, </span>
           <span className={elem('time')}>{timeRangeString}</span>
           <span className={elem('text-separator')}>·</span>
           <span className={elem('room')}>{this.props.room.title}</span>
+          <span>, </span>
+          <span className={elem('floor')}>{floor}</span>
         </div>
-        <UserItem
-          mods={{ button: false, transparent: true }}
-          content={userContent}
-          {...this.props.users[0]}
-        />
+        {type !== 'short' ? (
+          <UserItem
+            mods={{ button: false, transparent: true }}
+            content={userContent}
+            {...this.props.users[0]}
+          />
+        ) : ''}
       </div>
     );
   }

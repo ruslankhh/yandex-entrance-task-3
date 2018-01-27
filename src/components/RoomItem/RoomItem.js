@@ -10,6 +10,7 @@ class RoomItem extends Component {
     const plural = createPluralTemplate('ru');
     const n1 = this.props.capacity;
     const capacityText = plural`${n1} {человек, человека, человек}`;
+    const type = (this.props.mods && this.props.mods.type) || '';
 
     return (
       <div className={block('room-item')} id={`room-${this.props.id}`} >
@@ -23,7 +24,9 @@ class RoomItem extends Component {
             <span className={elem('floor')}>{this.props.floor}</span>
           </div>
         </div>
-        <SlotsList events={this.props.events}/>
+        {type !== 'short' ? (
+          <SlotsList events={this.props.events}/>
+        ) : ''}
       </div>
     );
   }

@@ -999,27 +999,27 @@ h6 {
       }
 
 .button--icon-arrow-left .button__text {
-      background-image: url("../images/arrow-left.svg");
+      background-image: url("../../images/arrow-left.svg");
     }
 
 .button--icon-arrow-right .button__text {
-      background-image: url("../images/arrow-right.svg");
+      background-image: url("../../images/arrow-right.svg");
     }
 
 .button--icon-arrow-down .button__text {
-      background-image: url("../images/arrow-down.svg");
+      background-image: url("../../images/arrow-down.svg");
     }
 
 .button--icon-arrow-up .button__text {
-      background-image: url("../images/arrow-up.svg");
+      background-image: url("../../images/arrow-up.svg");
     }
 
 .button--icon-close .button__text {
-      background-image: url("../images/close.svg");
+      background-image: url("../../images/close.svg");
     }
 
 .button--icon-edit .button__text {
-      background-image: url("../images/edit.svg");
+      background-image: url("../../images/edit.svg");
     }
 
 .button--text-left {
@@ -1081,7 +1081,7 @@ h6 {
 
 .button-checkbox__button-text {
       display: none;
-      background-image: url("../images/close-white.svg");
+      background-image: url("../../images/close-white.svg");
       background-position: center;
       background-repeat: no-repeat;
       height: 100%;
