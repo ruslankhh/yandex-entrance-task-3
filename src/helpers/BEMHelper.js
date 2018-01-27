@@ -10,20 +10,17 @@ class Block {
 
   static compiler(className, { mods = {}, mix = [] } = {}, classes) {
     const classNames = [
+      ...[].concat(mix),
       className,
       ...Object.keys(mods)
         .map(key => {
-          if (typeof mods[key] === 'boolean') {
-            if (mods[key]) {
-              // TODO: Update after fix styles
-              return `${className}--${key} ${className}--${key}-${mods[key]}`;
-            }
-            return null;
+          if (typeof mods[key] === 'boolean' && mods[key]) {
+            // TODO: Update after fix styles
+            return `${className}--${key} ${className}--${key}-${mods[key]}`;
           } else {
             return `${className}--${key}-${mods[key]}`;
           }
         }),
-      ...[].concat(mix),
       ...[].concat(classes)
     ];
 

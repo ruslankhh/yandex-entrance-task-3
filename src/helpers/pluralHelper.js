@@ -22,20 +22,31 @@ const getPluralRule = (lang) => {
 
 export const createPluralTemplate = (lang, titles) => {
   const pluralRule = getPluralRule(lang);
+  let valueIndex = 0;
 
   return (strings, ...values) => {
-    const filteredStrings = strings[0] === '' ? strings.slice(1) : strings;
-    const newStrings = filteredStrings.map((string, i) => {
-      const replacer = (match, substr) => {
-        const titles = substr.split(', ');
-        const titleIndex = pluralRule(Math.abs(values[i]));
+    const newStrings = strings.map((string, i) => {
+      const regexp = /\s?{(.*?)}/g;
 
-        return titles[titleIndex] || titles[0] || '';
-      };
+      if (~string.search(regexp)) {
+        const value = values[valueIndex];
+        const replacer = (match, substr) => {
+          const titles = substr.split(', ');
+          const titleIndex = pluralRule(Math.abs(value));
 
-      return string.replace(/\s?{(.*?)}/g, replacer);
+          const title = titles[titleIndex] || titles[0] || '';
+
+          return `${value} ${title}`;
+        };
+        
+        valueIndex++;
+
+        return string.replace(regexp, replacer);
+      }
+
+      return string;
     });
 
-    return values.map((value, i) => `${values[i]} ${newStrings[i]}`).join('');
+    return newStrings.join('');
   }
 }
