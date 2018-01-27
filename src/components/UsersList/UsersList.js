@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Block from '../../helpers/BEMHelper';
+import { createBlock } from '../../helpers/BEMHelper';
 
 import UserItem from './../UserItem/UserItem';
 
 class UsersList extends Component {
   render() {
-    const { block, elem } = new Block(this.props);
+    const { block, elem } = createBlock(this.props);
 
     return (
       <div className={block('users-list')}>

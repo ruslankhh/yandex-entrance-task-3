@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Block from '../../helpers/BEMHelper';
+import { createBlock } from '../../helpers/BEMHelper';
 
 import Button from './../Button/Button';
 import ButtonCheckbox from '../ButtonCheckbox/ButtonCheckbox';
@@ -10,7 +10,7 @@ import UsersList from '../UsersList/UsersList';
 
 class EventForm extends Component {
   render() {
-    const { block } = new Block(this.props);
+    const { block } = createBlock(this.props);
     const usersInputDatalist = this.props.data.users ? this.props.data.users
       .map(user => ({ ...user, label: `${user.homeFloor} этаж`, value: user.login })) : '';
 

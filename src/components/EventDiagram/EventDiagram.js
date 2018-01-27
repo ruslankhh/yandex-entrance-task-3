@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Block from '../../helpers/BEMHelper';
+import { createBlock } from '../../helpers/BEMHelper';
 
 import DatePicker from '../DatePicker/DatePicker';
 import RoomsList from '../RoomsList/RoomsList';
@@ -7,7 +7,7 @@ import Timeline from '../Timeline/Timeline';
 
 class EventDiagram extends Component {
   render() {
-    const { block, elem } = new Block(this.props);
+    const { block, elem } = createBlock(this.props);
 
     return (
       <main className={block('body', null, 'event-diagram')} id={this.props.id}>

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import Block from '../../helpers/BEMHelper';
-import { roomCapacityTemplate } from '../../helpers/stringHelper';
+import { createBlock } from '../../helpers/BEMHelper';
+import { createPluralTemplate } from '../../helpers/pluralHelper';
 
 class RoomItem extends Component {
   render() {
-    const { block, elem } = new Block(this.props);
-    const capacityText = roomCapacityTemplate`${this.props.capacity}`;
+    const { block, elem } = createBlock(this.props);
+    const plural = createPluralTemplate('ru');
+    const n1 = this.props.capacity;
+    const capacityText = plural`${n1} {человек, человека, человек}`;
 
     return (
       <div className={block('room-item')} id={`room-${this.props.id}`} >

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Block from '../../helpers/BEMHelper';
+import { createBlock } from '../../helpers/BEMHelper';
 
 class Link extends Component {
   render() {
-    const { block } = new Block(this.props);
+    const { block } = createBlock(this.props);
 
     return (
       <a className={block('link')} href={this.props.href}>
