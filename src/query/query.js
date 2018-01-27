@@ -8,5 +8,23 @@ export const APP_QUERY = gql`
       homeFloor
       avatarUrl
     }
+    events {
+      id
+      title
+      dateStart
+      dateEnd
+      users {
+        id
+      }
+      room {
+        id
+      }
+    }
+    rooms {
+      id
+      title
+      capacity
+      floor
+    }
   }
 `;
