@@ -22,9 +22,9 @@ const getPluralRule = (lang) => {
 
 export const createPluralTemplate = (lang, titles) => {
   const pluralRule = getPluralRule(lang);
-  let valueIndex = 0;
 
   return (strings, ...values) => {
+    let valueIndex = 0;
     const newStrings = strings.map((string, i) => {
       const regexp = /\s?{(.*?)}/g;
 
@@ -38,7 +38,7 @@ export const createPluralTemplate = (lang, titles) => {
 
           return `${value} ${title}`;
         };
-        
+
         valueIndex++;
 
         return string.replace(regexp, replacer);
