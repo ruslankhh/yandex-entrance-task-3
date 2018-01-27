@@ -15,9 +15,15 @@ export const APP_QUERY = gql`
       dateEnd
       users {
         id
+        login
+        homeFloor
+        avatarUrl
       }
       room {
         id
+        title
+        capacity
+        floor
       }
     }
     rooms {
