@@ -12,7 +12,7 @@ import UsersList from '../UsersList/UsersList';
 class EventForm extends Component {
   render() {
     const { block } = createBlock(this.props);
-    const usersInputDatalist = this.props.data.users ? this.props.data.users
+    const usersInputDatalist = this.props.users ? this.props.users
       .map(user => ({ ...user, label: `${user.homeFloor} этаж`, value: user.login })) : '';
 
     return (
@@ -42,7 +42,7 @@ class EventForm extends Component {
                 placeholder="Например, Тор Одинович"
                 options={usersInputDatalist}
               />
-              <UsersList users={this.props.data.users} />
+              <UsersList users={this.props.currentEvent ? this.props.currentEvent.users : ''} />
             </div>
             <div className="grid__item grid__item--col-2">
               <h6>Рекомендованные переговорки</h6>

@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-client-preset';
-import { ApolloProvider, graphql } from 'react-apollo';
-import { AppQuery } from './queries/AppQuery';
+import { ApolloProvider } from 'react-apollo';
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -21,14 +20,11 @@ const client = new ApolloClient({
   link: new HttpLink({ uri: '/graphql' }),
   cache: new InMemoryCache()
 });
-const AppWithData = graphql(AppQuery)(({ data }) => (
-  <App data={data} />
-));
 
 const history = createBrowserHistory();
 const store = createStore(
   combineReducers({
-    reducer,
+    app: reducer,
     router: routerReducer
   }),
   composeWithDevTools(
@@ -41,7 +37,7 @@ ReactDOM.render(
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <div>
-          <Route path="/" component={AppWithData} />
+          <Route path="/" component={App} />
         </div>
       </ConnectedRouter>
     </Provider>

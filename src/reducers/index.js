@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
-import events from './events';
-import visibilityFilter from './visibilityFilter';
+import date from './date';
 
 const reducer = combineReducers({
-  events,
-  visibilityFilter
+  date
 });
 
 export default reducer;

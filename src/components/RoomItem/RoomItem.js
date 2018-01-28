@@ -25,7 +25,7 @@ class RoomItem extends Component {
           </div>
         </div>
         {type !== 'short' ? (
-          <SlotsList events={this.props.events}/>
+          <SlotsList date={this.props.date} events={this.props.events}/>
         ) : ''}
       </div>
     );

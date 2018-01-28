@@ -4,21 +4,6 @@ import { createBlock } from '../../helpers/BEMHelper';
 import Button from '../Button/Button';
 
 class DatePicker extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleClickButtonLeft = this.handleClickButtonLeft.bind(this);
-    this.handleClickButtonRight = this.handleClickButtonRight.bind(this);
-  }
-
-  handleClickButtonLeft() {
-    this.props.prevDate();
-  }
-
-  handleClickButtonRight() {
-    this.props.nextDate();
-  }
-
   render() {
     const { block, elem } = createBlock(this.props);
     const today = new Date();
@@ -34,7 +19,7 @@ class DatePicker extends Component {
         <Button
           mods={{ icon: 'arrow-left', size: 'xs', circle: true }}
           mix={elem('button-left')}
-          onClick={this.handleClickButtonLeft}
+          onClick={this.props.onButtonLeftClick}
         />
         <div className={elem('link', {}, 'link')}>
           {dateString}
@@ -42,7 +27,7 @@ class DatePicker extends Component {
         <Button
           mods={{ icon: 'arrow-right', size: 'xs', circle: true }}
           mix={elem('button-right')}
-          onClick={this.handleClickButtonRight}
+          onClick={this.props.onButtonRightClick}
         />
       </div>
     );

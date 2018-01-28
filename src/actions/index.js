@@ -1,8 +1,19 @@
-let nextTodoId = 0;
-export const addTodo = (text) => ({
+export const setDate = (date) => ({
+  type: 'SET_DATE',
+  date
+});
+
+export const incrementDate = () => ({
+  type: 'INCREMENT_DATE'
+});
+
+export const decrementDate = () => ({
+  type: 'DECREMENT_DATE'
+});
+
+export const addEvent = (event) => ({
   type: 'ADD_TODO',
-  id: nextTodoId++,
-  text
+  event
 });
 
 export const setVisibilityFilter = (filter) => ({

@@ -1,27 +1,15 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import EventDiagram from './../EventDiagram/EventDiagram';
-import EventForm from './../EventForm/EventForm';
+import EventDiagramContainer from '../../containers/EventDiagramContainer';
+import EventFormContainer from '../../containers/EventFormContainer';
 
 class Main extends Component {
   render() {
-    if (this.props.data.loading) {
-      return null;
-    }
-    if (this.props.data.error) {
-      console.error(this.props.data.error.message);
-      return null;
-    }
-
     return (
       <Switch>
-        <Route exact path="/" render={() =>
-          <EventDiagram data={this.props.data} />
-        }/>
-        <Route exact path="/event" render={() =>
-          <EventForm data={this.props.data} />
-        }/>
+        <Route exact path="/" component={EventDiagramContainer} />
+        <Route exact path="/event" component={EventFormContainer} />
       </Switch>
     );
   }
