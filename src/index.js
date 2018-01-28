@@ -8,10 +8,10 @@ import { AppQuery } from './queries/AppQuery';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
-import reducers from './reducers';
-import createHistory from 'history/createBrowserHistory';
-import { Router } from 'react-router-dom';
-import { routerReducer, routerMiddleware } from 'react-router-redux';
+import { Route } from 'react-router';
+import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
+import createBrowserHistory from 'history/createBrowserHistory';
+import reducer from './reducers';
 
 import registerServiceWorker from './helpers/registerServiceWorker';
 
@@ -25,10 +25,10 @@ const AppWithData = graphql(AppQuery)(({ data }) => (
   <App data={data} />
 ));
 
-const history = createHistory();
+const history = createBrowserHistory();
 const store = createStore(
   combineReducers({
-    ...reducers,
+    reducer,
     router: routerReducer
   }),
   composeWithDevTools(
@@ -39,9 +39,11 @@ const store = createStore(
 ReactDOM.render(
   <ApolloProvider client={client}>
     <Provider store={store}>
-      <Router history={history}>
-        <AppWithData />
-      </Router>
+      <ConnectedRouter history={history}>
+        <div>
+          <Route path="/" component={AppWithData} />
+        </div>
+      </ConnectedRouter>
     </Provider>
   </ApolloProvider>,
   document.getElementById('root')

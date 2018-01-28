@@ -2,9 +2,9 @@ import { combineReducers } from 'redux';
 import events from './events';
 import visibilityFilter from './visibilityFilter';
 
-const app = combineReducers({
+const reducer = combineReducers({
   events,
   visibilityFilter
 });
 
-export default app;
+export default reducer;
