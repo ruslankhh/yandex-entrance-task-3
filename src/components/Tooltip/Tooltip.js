@@ -10,7 +10,7 @@ class Tooltip extends Component {
     return (
       <div className={block('tooltip')}>
         <div className={elem('body')}>
-          <Button mods={{ icon: 'edit', size: 'xs', circle: true }} mix={elem('button')} />
+          <Button to="/event" mods={{ icon: 'edit', size: 'xs', circle: true }} mix={elem('button')} />
           {this.props.children}
         </div>
       </div>

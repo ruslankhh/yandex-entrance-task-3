@@ -16,7 +16,7 @@ class ModalEventRemove extends Component {
         <h3 className={elem('title')}>Встреча будет<br />удалена безвозвратно</h3>
         <div className={elem('footer', {}, 'grid grid--margin-true grid--center')}>
           <Button mods={{ type: 'secondary', size: 'md' }} mix="grid__item">Отмена</Button>
-          <Button mods={{ type: 'secondary', size: 'md' }} mix="grid__item">Удалить</Button>
+          <Button to="/" mods={{ type: 'secondary', size: 'md' }} mix="grid__item">Удалить</Button>
         </div>
       </Modal>
     );

@@ -12,10 +12,10 @@ class SlotsList extends Component {
       <div className={block('slots-list', { mix: 'room-item__content' })}>
         {items.map((value, i) => {
           if (i === 0 || i === items.length - 1) {
-            return <Slot key={i} />;
+            return <Slot key={i} mods={{ type: 'secondary', disabled: true }} />;
           }
 
-          return <Slot key={i} mods={{ type: 'secondary' }} time="60" event={this.props.events[0]} />;
+          return <Slot key={i} time="60" />;
         })}
       </div>
     );

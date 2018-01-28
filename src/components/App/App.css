@@ -869,6 +869,7 @@ h6 {
   color: #000000;
   position: relative;
   text-align: center;
+  text-decoration: none;
 }
 
 .button__time {

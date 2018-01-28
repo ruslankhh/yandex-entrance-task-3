@@ -5,6 +5,7 @@ import Button from './../Button/Button';
 import ButtonCheckbox from '../ButtonCheckbox/ButtonCheckbox';
 import Input from './../Input/Input';
 import InputDatalist from '../InputDatalist/InputDatalist';
+import ModalEventRemove from '../ModalEventRemove/ModalEventRemove';
 import RoomItem from '../RoomItem/RoomItem';
 import UsersList from '../UsersList/UsersList';
 
@@ -19,7 +20,7 @@ class EventForm extends Component {
         <div className="container container--width-md container--center">
           <h3 className="title">
             <span>Новая встреча</span>
-            <Button mods={{ icon: 'close', size: 'xs', circle: true }} mix="title__button" />
+            <Button to="/" mods={{ icon: 'close', size: 'xs', circle: true }} mix="title__button" />
           </h3>
           <div className="grid grid--padding-bottom">
             <div className="grid__item grid__item--col-2">
@@ -59,6 +60,7 @@ class EventForm extends Component {
             </div>
           </div>
         </div>
+        <ModalEventRemove mods={{ opened: false }} />
       </main>
     );
   }

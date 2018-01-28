@@ -3,7 +3,6 @@ import { createBlock } from '../../helpers/BEMHelper';
 
 import DatePicker from '../DatePicker/DatePicker';
 import ModalEventCreated from '../ModalEventCreated/ModalEventCreated';
-import ModalEventRemove from '../ModalEventRemove/ModalEventRemove';
 import RoomsList from '../RoomsList/RoomsList';
 import Timeline from '../Timeline/Timeline';
 
@@ -28,7 +27,6 @@ class EventDiagram extends Component {
           <div className={elem('main-body')}></div>
         </div>
         <ModalEventCreated mods={{ opened: false }} event={this.props.data.events[0]}/>
-        <ModalEventRemove mods={{ opened: false }} />
       </main>
     );
   }

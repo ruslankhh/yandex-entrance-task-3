@@ -8,8 +8,8 @@ class Footer extends Component {
     return (
       <Route exact path="/event" render={() => (
         <footer className="footer">
-          <Button mods={{ type: 'secondary', size: 'md' }}>Отмена</Button>
-          <Button mods={{ type: 'primary', size: 'md' }}>Создать встречу</Button>
+          <Button to="/" mods={{ type: 'secondary', size: 'md' }}>Отмена</Button>
+          <Button to="/" mods={{ type: 'primary', size: 'md' }}>Создать встречу</Button>
         </footer>
       )}/>
     );
