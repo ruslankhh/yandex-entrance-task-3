@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { clearEvent } from '../actions';
 
 import Footer from '../components/Footer/Footer';
 
@@ -8,7 +9,10 @@ const mapStateToProps = (state, ownProps) => ({
   ownProps
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  onButtonCloseClick: clearEvent
+};
+
 
 const FooterContainer = connect(
   mapStateToProps,

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
+import { clearEvent } from '../actions';
 import { APP_QUERY } from '../queries';
 
 import EventForm from '../components/EventForm/EventForm';
@@ -9,7 +10,9 @@ const mapStateToProps = (state) => ({
   event: state.app.event
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  onButtonCloseClick: clearEvent
+};
 
 const mapResultToProps = ({ ownProps, data }) => {
   if (data.loading || data.error) {

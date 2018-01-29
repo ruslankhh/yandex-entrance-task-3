@@ -18,13 +18,12 @@ class EventForm extends Component {
       'Ваша переговорка' : 'Рекомендованные переговорки';
     const eventTitle = this.props.event && this.props.event.title ?
       this.props.event.title : '';
-    const eventDateStartISOString = this.props.event && this.props.event.dateStart ?
-      (new Date(this.props.event.dateStart)).toISOString() : '';
-    const eventDateEndISOString = this.props.event && this.props.event.dateEnd ?
-      (new Date(this.props.event.dateEnd)).toISOString() : '';
-    const eventDate = eventDateStartISOString.slice(0, 10);
-    const eventTimeStart = eventDateStartISOString.slice(11, 16);
-    const eventTimeEnd = eventDateEndISOString.slice(11, 16);
+    const eventDate = this.props.event && this.props.event.dateStart ?
+      (new Date(this.props.event.dateStart)).toISOString().slice(0, 10) : '';
+    const eventTimeStart = this.props.event && this.props.event.dateStart ?
+      (new Date(this.props.event.dateStart)).toTimeString().slice(0, 5) : '';
+    const eventTimeEnd = this.props.event && this.props.event.dateEnd ?
+      (new Date(this.props.event.dateEnd)).toTimeString().slice(0, 5) : '';
     const roomTimeRange = `${eventTimeStart}-${eventTimeEnd}`;
     const usersInputDatalist = this.props.users ? this.props.users
       .map(user => ({ ...user, label: `${user.homeFloor} этаж`, value: user.login })) : '';
@@ -34,7 +33,12 @@ class EventForm extends Component {
         <div className="container container--width-md container--center">
           <h3 className="title">
             <span>{title}</span>
-            <Button to="/" mods={{ icon: 'close', size: 'xs', circle: true }} mix="title__button" />
+            <Button
+              to="/"
+              mods={{ icon: 'close', size: 'xs', circle: true }}
+              mix="title__button"
+              onClick={this.props.onButtonCloseClick}
+            />
           </h3>
           <div className="grid grid--padding-bottom">
             <div className="grid__item grid__item--col-2">
@@ -55,6 +59,7 @@ class EventForm extends Component {
                   id="date"
                   type="date"
                   label="Дата"
+                  placeholder="mm/dd/yyyy"
                   defaultValue={eventDate}
                 />
                 <Input
@@ -63,6 +68,7 @@ class EventForm extends Component {
                   id="timestart"
                   type="time"
                   label="Начало"
+                  placeholder="--:--"
                   defaultValue={eventTimeStart}
                 />
                 <div className="input-group__separator">—</div>
@@ -72,6 +78,7 @@ class EventForm extends Component {
                   id="timeend"
                   type="time"
                   label="Конец"
+                  placeholder="--:--"
                   defaultValue={eventTimeEnd}
                 />
               </div>
