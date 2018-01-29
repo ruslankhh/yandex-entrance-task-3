@@ -9,7 +9,8 @@ class Slot extends Component {
   render() {
     const { block, elem } = createBlock(this.props);
     const HOUR = 60 * 60 * 1000;
-    const slotWidth = this.props.duration ? ((66 / 1035) * this.props.duration / HOUR) * 100 : '';
+    const slotWidth = this.props.duration ?
+      ((66 / 1035) * this.props.duration / HOUR) * 100 : '';
     const slotStyles = this.props.duration ? { width: `${slotWidth}%` } : {};
     const isLink = !(
       this.props.event || (this.props.mods && this.props.mods.type === 'secondary')
@@ -35,7 +36,11 @@ class Slot extends Component {
             <div className={elem('button-text')}>+</div>
           </Button>
         ))() : (() => (
-          <Button mods={this.props.mods} mix={elem('button')} />
+          <Button
+            mods={this.props.mods}
+            mix={elem('button')}
+            onClick={onClick}
+          />
         ))()}
         {this.props.event ? (() => (
           <Tooltip mix={elem('tooltip')} onSlotButtonClick={onClick}>

@@ -14,7 +14,7 @@ class EventForm extends Component {
     const { block } = createBlock(this.props);
     const title = this.props.event && this.props.event.isCreated ?
       'Редактирование встречи': 'Новая встреча';
-    const roomTitle = this.props.event && this.props.event.isCreated ?
+    const roomTitle = this.props.event && this.props.event.room ?
       'Ваша переговорка' : 'Рекомендованные переговорки';
     const eventTitle = this.props.event && this.props.event.title ?
       this.props.event.title : '';
@@ -95,7 +95,7 @@ class EventForm extends Component {
             </div>
             <div className="grid__item grid__item--col-2">
               <h6>{roomTitle}</h6>
-              {this.props.event && this.props.event.isCreated ? (() => (
+              {this.props.event && this.props.event.room ? (() => (
                 <div className="button-group button-group--width-full">
                   <ButtonCheckbox id="rooms-1" mods={{ size: 'md' }} mix="button-group__item" defaultChecked={true}>
                     <RoomItem
