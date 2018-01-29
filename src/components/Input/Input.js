@@ -15,7 +15,7 @@ class Input extends Component {
             className={elem('control', this.props)}
             type={this.props.type}
             placeholder={this.props.placeholder}
-            value={this.props.value}
+            defaultValue={this.props.defaultValue}
           />
         </div>
       </div>

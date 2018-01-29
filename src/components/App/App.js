@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Footer from '../Footer/Footer';
+import FooterContainer from '../../containers/FooterContainer';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 
@@ -11,7 +11,7 @@ class App extends Component {
       <div className="app page--index">
         <Header />
         <Main data={this.props.data} />
-        <Footer />
+        <FooterContainer />
       </div>
     );
   }

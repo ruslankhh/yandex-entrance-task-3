@@ -6,7 +6,7 @@ import EventForm from '../components/EventForm/EventForm';
 
 const mapStateToProps = (state) => ({
   date: state.app.date,
-  currentEvent: state.app.currentEvent
+  event: state.app.event
 });
 
 const mapDispatchToProps = {};

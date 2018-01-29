@@ -12,7 +12,7 @@ class ButtonCheckbox extends Component {
           id={this.props.id}
           name={this.props.id}
           type="checkbox"
-          checked={this.props.checked}
+          defaultChecked={this.props.defaultChecked}
           hidden
         />
         <div className={elem('content')}>

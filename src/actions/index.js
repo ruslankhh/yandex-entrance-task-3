@@ -11,12 +11,11 @@ export const decrementDate = () => ({
   type: 'DECREMENT_DATE'
 });
 
-export const addEvent = (event) => ({
-  type: 'ADD_TODO',
+export const setEvent = (event) => ({
+  type: 'SET_EVENT',
   event
 });
 
-export const setVisibilityFilter = (filter) => ({
-  type: 'SET_VISIBILITY_FILTER',
-  filter
+export const clearEvent = () => ({
+  type: 'CLEAR_EVENT'
 });

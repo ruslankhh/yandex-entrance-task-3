@@ -15,7 +15,7 @@ class InputDatalist extends Component {
             className={elem('control', this.props)}
             type={this.props.type}
             placeholder={this.props.placeholder}
-            value={this.props.value}
+            defaultValue={this.props.defaultValue}
             list={`${this.props.id}-list`}
           />
           <datalist id={`${this.props.id}-list`}>

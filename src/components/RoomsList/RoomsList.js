@@ -6,7 +6,7 @@ import RoomItem from '../RoomItem/RoomItem';
 class RoomsList extends Component {
   render() {
     const { block, elem } = createBlock(this.props);
-    
+
     return (
       <div className={block('rooms-list')}>
         <div className={elem('title')}>{this.props.title}</div>
@@ -21,7 +21,9 @@ class RoomsList extends Component {
                 mods={{ content: true }}
                 mix={elem('item')}
                 date={this.props.date}
+                onSlotButtonClick={this.props.onSlotButtonClick}
                 events={roomEvents}
+                room={room}
                 {...room}
               />
             );

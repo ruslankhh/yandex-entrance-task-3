@@ -41,6 +41,7 @@ export const calcSlotsProps = (props) => {
         mods: { type: 'primary' },
         dateStart,
         dateEnd: slotDateEnd,
+        room: props.room
       };
 
       dateStart = slotDateEnd;
@@ -51,7 +52,8 @@ export const calcSlotsProps = (props) => {
         mods: { type: 'secondary' },
         dateStart: eventDateStart,
         dateEnd: eventDateEnd,
-        event: events[eventIndex]
+        event: events[eventIndex],
+        room: props.room
       };
 
       dateStart = eventDateEnd;

@@ -17,12 +17,13 @@ class EventItem extends Component {
     const timeEndString = dateEnd
       .toLocaleString('ru', { hour: 'numeric', minute: 'numeric' });
     const timeRangeString = `${timeStartString}-${timeEndString}`;
-    const n1 = this.props.users.length - 1;
-    const userContent = this.props.users.length > 1 ?
+    const n1 = this.props.users ? this.props.users.length - 1 : '';
+    const userContent = this.props.users && this.props.users.length > 1 ?
       plural`и ${n1} {участник, участника, участников}` : '';
-    const n2 = this.props.room.floor;
-    const floor = plural`${n2} {этаж, этаж, этаж}`;
+    const n2 = this.props.room ? this.props.room.floor : '';
+    const floor = this.props.room ? plural`${n2} {этаж, этаж, этаж}` : '';
     const type = (this.props.mods && this.props.mods.type) || '';
+    const roomTitle = this.props.room ? this.props.room.title : '';
 
     return (
       <div className={block('event-item')}>
@@ -32,7 +33,7 @@ class EventItem extends Component {
           <span>, </span>
           <span className={elem('time')}>{timeRangeString}</span>
           <span className={elem('text-separator')}>·</span>
-          <span className={elem('room')}>{this.props.room.title}</span>
+          <span className={elem('room')}>{roomTitle}</span>
           <span>, </span>
           <span className={elem('floor')}>{floor}</span>
         </div>
