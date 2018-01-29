@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import logo from './../../images/logo.svg';
 
 import Button from './../Button/Button';
@@ -9,9 +9,11 @@ class Header extends Component {
     return (
       <header className="header">
         <img className="image" src={logo} alt="Яндекс.Переговорки"/>
-        <Route exact path="/" render={() => (
-          <Button to="/event" mods={{ type: 'primary', size: 'md' }}>Создать встречу</Button>
-        )}/>
+        <Switch>
+          <Route exact path="/" render={() => (
+            <Button to="/event" mods={{ type: 'primary', size: 'md' }}>Создать встречу</Button>
+          )}/>
+        </Switch>
       </header>
     );
   }

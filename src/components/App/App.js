@@ -10,8 +10,8 @@ class App extends Component {
     return (
       <div className="app page--index">
         <Header />
-        <Main data={this.props.data} />
-        <FooterContainer />
+        <Main />
+        <FooterContainer/>
       </div>
     );
   }
