@@ -4,24 +4,23 @@ const event = (state = null, { type, event }) => {
       if (!event) {
         return null;
       }
+      
+      const date = event.date ? event.date : event.dateStart ?
+        (new Date(event.dateStart)).toISOString().slice(0, 10) : null;
+      const timeStart = event.timeStart ? event.timeStart : event.dateStart ?
+        (new Date(event.dateStart)).toTimeString().slice(0, 5) : null;
+      const timeEnd = event.timeEnd ? event.timeEnd : event.dateEnd ?
+        (new Date(event.dateEnd)).toTimeString().slice(0, 5) : null;
+      const dateStart = date && timeStart ?
+        new Date((new Date(date))
+          .setHours(timeStart.slice(0, 2), timeStart.slice(3, 5))
+        ) : event.dateStart;
+      const dateEnd = date && timeEnd ?
+        new Date((new Date(date))
+          .setHours(timeEnd.slice(0, 2), timeEnd.slice(3, 5))
+        ) : event.dateEnd;
 
-      const oldDateStart = event.dateStart || null;
-      const dateStart =
-        (event.date || oldDateStart) && event.timeStart ?
-        new Date((new Date(event.date || oldDateStart))
-          .setHours(event.timeStart.slice(0, 2), event.timeStart.slice(3, 5))
-        ) :
-        oldDateStart;
-
-      const oldDateEnd = event.dateEnd || null;
-      const dateEnd =
-        (event.date || oldDateEnd) && event.timeEnd ?
-        new Date((new Date(event.date || oldDateEnd))
-          .setHours(event.timeEnd.slice(0, 2), event.timeEnd.slice(3, 5))
-        ) :
-        oldDateEnd;
-
-      return { ...event, dateStart, dateEnd };
+      return { ...event, date, dateStart, dateEnd, timeStart, timeEnd };
 
     case 'CLEAR_EVENT':
       return null;

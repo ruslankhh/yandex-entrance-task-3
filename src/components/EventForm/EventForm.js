@@ -22,22 +22,19 @@ class EventForm extends Component {
     } = this.props;
     const title = event && event.isCreated ?
       'Редактирование встречи': 'Новая встреча';
-    const roomTitle = event && event.room ?
-      'Ваша переговорка' : 'Рекомендованные переговорки';
-    const eventTitle = event && event.title ?
-      event.title : '';
-    const eventDate = event && event.dateStart ?
-      (new Date(event.dateStart)).toISOString().slice(0, 10) : '';
-    const eventTimeStart = event && event.dateStart ?
-      (new Date(event.dateStart)).toTimeString().slice(0, 5) : '';
-    const eventTimeEnd = event && event.dateEnd ?
-      (new Date(event.dateEnd)).toTimeString().slice(0, 5) : '';
-    const roomTimeRange = eventTimeStart && eventTimeEnd ? `${eventTimeStart}-${eventTimeEnd}` : '';
     const eventUsers = event ? event.users : '';
     const usersInputDatalist = users ? users
       .map(user => ({ ...user, label: `${user.homeFloor} этаж`, value: user.login })) : '';
-    // TODO: Add getRecommendation.
+
+    // TODO: Update this with getRecommendation
+    const roomTimeStart = event && event.timeStart ? event.timeStart : '08:00';
+    const roomTimeEnd = event && event.timeEnd ? event.timeEnd : '09:00';
+    const roomTimeRange = `${roomTimeStart}-${roomTimeEnd}`;
     const recommendationRooms = rooms;
+    const isRecommendationShow = event && event.date &&
+      event.timeStart && event.timeEnd && recommendationRooms;
+    const roomTitle = event && event.room ? 'Ваша переговорка' :
+      isRecommendationShow ? 'Рекомендованные переговорки' : '';
 
     const buttonCloseProps = {
       mods: { icon: 'close', size: 'xs', circle: true },
@@ -48,15 +45,17 @@ class EventForm extends Component {
       mods: { size: 'md' },
       mix: 'title__button',
       placeholder: 'О чём будете говорить?',
-      defaultValue: eventTitle,
-      onChange: ({ target: { value }}) => onInputChange({ ...event, title: value })
+      defaultValue: event ? event.title : null,
+      onChange: ({ target: { value }}) =>
+        onInputChange({ ...event, title: value })
     };
     const inputDateProps = {
       mods: { size: 'md' },
       mix: 'input-group__item',
       placeholder: 'mm/dd/yyyy',
-      defaultValue: eventDate,
-      onChange: ({ target: { value }}) => onInputChange({ ...event, date: value })
+      defaultValue: event ? event.date : null,
+      onChange: ({ target: { value }}) =>
+        onInputChange({ ...event, date: value, room: null })
     };
     const inputTimeProps = {
       mods: { size: 'md' },
@@ -65,13 +64,15 @@ class EventForm extends Component {
     };
     const inputTimeStartProps = {
       ...inputTimeProps,
-      defaultValue: eventTimeStart,
-      onChange: ({ target: { value }}) => onInputChange({ ...event, timeStart: value })
+      defaultValue: event ? event.timeStart : null,
+      onChange: ({ target: { value }}) =>
+        onInputChange({ ...event, timeStart: value, room: null })
     };
     const inputTimeEndProps = {
       ...inputTimeProps,
-      defaultValue: eventTimeEnd,
-      onChange: ({ target: { value }}) => onInputChange({ ...event, timeEnd: value })
+      defaultValue: event ? event.timeEnd : null,
+      onChange: ({ target: { value }}) =>
+        onInputChange({ ...event, timeEnd: value, room: null })
     };
     const inputDatalistProps = {
       mods: { size: 'md' },
@@ -86,12 +87,13 @@ class EventForm extends Component {
         }, {}) : {};
         const eventUsers = user && !oldEventUsersHash[user.login] ?
           [...oldEventUsers, user] : oldEventUsers;
+        const room = eventUsers.length > event.room.capacity ? null : event.room;
 
         if (user) {
           target.value = null;
         }
 
-        onInputChange({ ...event, users: eventUsers });
+        onInputChange({ ...event, users: eventUsers, room });
       }
     };
     const roomItemProps = {
@@ -130,7 +132,7 @@ class EventForm extends Component {
               <div className="button-group button-group--width-full">
               {event && event.room ? (() => (
                 <RoomItem {...roomItemProps} {...event.room} isRoomChecked={true} room={event.room} defaultChecked={true}/>
-              ))() : recommendationRooms ? recommendationRooms.map(room => (
+              ))() : isRecommendationShow ? recommendationRooms.map(room => (
                 <RoomItem key={room.id} {...roomItemProps} {...room} isRoomChecked={false} room={room} />
               )) : ''}
               </div>
