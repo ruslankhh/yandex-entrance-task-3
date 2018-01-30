@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
 import { incrementDate, decrementDate, setEvent } from '../actions';
-import { APP_QUERY } from '../queries';
+import { APP_QUERY } from '../requests';
 
 import EventDiagram from '../components/EventDiagram/EventDiagram';
 
