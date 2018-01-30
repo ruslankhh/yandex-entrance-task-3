@@ -16,7 +16,7 @@ const mapDispatchToProps = {
   onSlotButtonClick: setEvent
 };
 
-const mapResultToProps = ({ ownProps, data }) => {
+const mapDataToProps = ({ ownProps, data }) => {
   if (data.loading || data.error) {
     return data;
   }
@@ -32,15 +32,18 @@ const mapResultToProps = ({ ownProps, data }) => {
     rooms: data.rooms
   })
 };
+const options = ({ shouldPoll }) => ({
+  pollInterval: 1000,
+});
 
-const EventDiagramWithDate = graphql(
+const EventDiagramWithData = graphql(
   APP_QUERY,
-  { props: mapResultToProps }
+  { props: mapDataToProps, options }
 )(EventDiagram);
 
 const EventDiagramContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(EventDiagramWithDate);
+)(EventDiagramWithData);
 
 export default EventDiagramContainer;

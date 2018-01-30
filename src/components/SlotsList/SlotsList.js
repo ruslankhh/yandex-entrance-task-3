@@ -8,7 +8,7 @@ class SlotsList extends Component {
   render() {
     const { block } = createBlock(this.props);
     const slotsProps = calcSlotsProps(this.props);
-
+    
     return (
       <div className={block('slots-list', { mix: 'room-item__content' })}>
         {slotsProps.map((prop, i) => (

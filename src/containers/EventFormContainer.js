@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
 import { setEvent, clearEvent } from '../actions';
-import { APP_QUERY } from '../queries';
+import { APP_QUERY } from '../requests';
 
 import EventForm from '../components/EventForm/EventForm';
 
@@ -17,7 +17,7 @@ const mapDispatchToProps = {
   onButtonCloseClick: clearEvent
 };
 
-const mapResultToProps = ({ ownProps, data }) => {
+const mapDataToProps = ({ ownProps, data }) => {
   if (data.loading || data.error) {
     return data;
   }
@@ -35,14 +35,14 @@ const mapResultToProps = ({ ownProps, data }) => {
   })
 };
 
-const EventFormWithDate = graphql(
+const EventFormWithData = graphql(
   APP_QUERY,
-  { props: mapResultToProps }
+  { props: mapDataToProps }
 )(EventForm);
 
 const EventFormContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(EventFormWithDate);
+)(EventFormWithData);
 
 export default EventFormContainer;

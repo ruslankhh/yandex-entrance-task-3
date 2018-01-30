@@ -4,7 +4,7 @@ const event = (state = null, { type, event }) => {
       if (!event) {
         return null;
       }
-      
+
       const date = event.date ? event.date : event.dateStart ?
         (new Date(event.dateStart)).toISOString().slice(0, 10) : null;
       const timeStart = event.timeStart ? event.timeStart : event.dateStart ?
@@ -20,7 +20,24 @@ const event = (state = null, { type, event }) => {
           .setHours(timeEnd.slice(0, 2), timeEnd.slice(3, 5))
         ) : event.dateEnd;
 
-      return { ...event, date, dateStart, dateEnd, timeStart, timeEnd };
+      const isCreated = !!event.isCreated;
+      const isCorrect =
+        !!event.title &&
+        !Number.isNaN(Date.parse(dateStart)) &&
+        !Number.isNaN(Date.parse(dateEnd)) &&
+        dateEnd > dateStart &&
+        !!event.room;
+
+      return {
+        ...event,
+        isCorrect,
+        isCreated,
+        date,
+        dateStart,
+        dateEnd,
+        timeStart,
+        timeEnd
+      };
 
     case 'CLEAR_EVENT':
       return null;

@@ -20,8 +20,10 @@ class Slot extends Component {
       dateStart: this.props.dateStart,
       dateEnd: this.props.dateEnd,
       room: this.props.room,
+      originUsers: this.props.event ? this.props.event.users : null,
       ...this.props.event
     };
+
     const onClick = () => this.props.onSlotButtonClick(event);
 
     return (

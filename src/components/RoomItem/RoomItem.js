@@ -17,7 +17,7 @@ class RoomItem extends Component {
     const onChange = () => {
       onButtonCheckboxClick({ ...event, room: isRoomChecked ? null : room })
     };
-
+    
     return this.props.mods && this.props.mods.type === 'short' ? (
       <div className={block('room-item')}>
         <ButtonCheckbox {...this.props} onChange={onChange}>
