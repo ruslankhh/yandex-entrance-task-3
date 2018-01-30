@@ -14,6 +14,7 @@ class ButtonCheckbox extends Component {
           type="checkbox"
           defaultChecked={this.props.defaultChecked}
           hidden
+          onChange={this.props.onChange}
         />
         <div className={elem('content')}>
           {this.props.children}

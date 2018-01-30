@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
-import { clearEvent } from '../actions';
+import { setEvent, clearEvent } from '../actions';
 import { APP_QUERY } from '../queries';
 
 import EventForm from '../components/EventForm/EventForm';
@@ -11,6 +11,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
+  onInputChange: setEvent,
+  onButtonUserRemoveClick: setEvent,
+  onButtonCheckboxClick: setEvent,
   onButtonCloseClick: clearEvent
 };
 

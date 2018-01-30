@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import Button from './../Button/Button';
 
@@ -15,22 +15,20 @@ class Footer extends Component {
     };
 
     return (
-      <Switch>
-        <Route exact path="/event" render={() =>
-          this.props.event && this.props.event.isCreated ? (
-            <footer className="footer">
-              <Button to="/" {...props1}>Отмена</Button>
-              <Button to="/" {...props1}>Удалить встречу</Button>
-              <Button to="/" {...props1}>Сохранить</Button>
-            </footer>
-          ) : (
-            <footer className="footer">
-              <Button to="/" {...props1}>Отмена</Button>
-              <Button to="/" {...props2}>Создать встречу</Button>
-            </footer>
-          )
-        }/>
-      </Switch>
+      <Route exact path="/event" render={() =>
+        this.props.event && this.props.event.isCreated ? (
+          <footer className="footer">
+            <Button to="/" {...props1}>Отмена</Button>
+            <Button to="/" {...props1}>Удалить встречу</Button>
+            <Button to="/" {...props1}>Сохранить</Button>
+          </footer>
+        ) : (
+          <footer className="footer">
+            <Button to="/" {...props1}>Отмена</Button>
+            <Button to="/" {...props2}>Создать встречу</Button>
+          </footer>
+        )
+      }/>
     );
   }
 }

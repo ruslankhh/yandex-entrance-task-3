@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { clearEvent } from '../actions';
+import { setEvent } from '../actions';
 
-import Footer from '../components/Footer/Footer';
+import Header from '../components/Header/Header';
 
 const mapStateToProps = (state) => ({
   date: state.app.date,
@@ -10,13 +10,13 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  onButtonCloseClick: clearEvent
+  onButtonClick: setEvent
 };
 
 
-const FooterContainer = connect(
+const HeaderContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Footer);
+)(Header);
 
-export default FooterContainer;
+export default HeaderContainer;

@@ -17,6 +17,9 @@ class InputDatalist extends Component {
             placeholder={this.props.placeholder}
             defaultValue={this.props.defaultValue}
             list={`${this.props.id}-list`}
+            onChange={this.props.onChange}
+            onInput={this.props.onInput}
+            onKeyPress={this.props.onKeyPress}
           />
           <datalist id={`${this.props.id}-list`}>
             {this.props.options ? this.props.options.map(option => (
