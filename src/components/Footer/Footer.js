@@ -8,9 +8,9 @@ class Footer extends Component {
     const {
       event,
       onButtonCloseClick,
+      showModal,
       createEventMutate,
       updateEventMutate,
-      removeEventMutate,
       removeUserFromEventMutate,
       addUserToEventMutate,
       changeEventRoomMutate
@@ -26,8 +26,8 @@ class Footer extends Component {
         const roomId = event.room.id;
 
         if (!isCreated) {
-          // TODO: Add modal show.
           createEventMutate({ variables: { input, usersIds, roomId } });
+          showModal({ type: 'eventCreated', event });
         } else {
           const usersHash = users
             .reduce((acc, user) => ({ ...acc, [user.login]: user }), {});
@@ -47,13 +47,9 @@ class Footer extends Component {
           changeEventRoomMutate({ variables: { id, roomId } });
         }
       } else {
-        // TODO: Add modal show.
-        console.log('Event is not correct.');
+        showModal({ type: 'eventIsNotCorrect', event });
       }
     };
-    // TODO: Add modal show.
-    const onButtonRemoveClick = () =>
-      removeEventMutate({ variables: { id: event.id } });
 
     const props1 = {
       mods: { type: 'secondary', size: 'md' },
@@ -61,7 +57,8 @@ class Footer extends Component {
     };
     const props2 = {
       mods: { type: 'secondary', size: 'md' },
-      onClick: onButtonRemoveClick
+      onClick: () =>
+        showModal({ type: 'eventRemove', event })
     };
     const props3 = {
       mods: { type: 'secondary', size: 'md' },
@@ -77,7 +74,7 @@ class Footer extends Component {
         event && event.isCreated ? (
           <footer className="footer">
             <Button to="/" {...props1}>Отмена</Button>
-            <Button to="/" {...props2}>Удалить встречу</Button>
+            <Button {...props2}>Удалить встречу</Button>
             <Button to={isCorrect ? '/' : null} {...props3}>Сохранить</Button>
           </footer>
         ) : (

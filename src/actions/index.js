@@ -19,3 +19,12 @@ export const setEvent = (event) => ({
 export const clearEvent = () => ({
   type: 'CLEAR_EVENT'
 });
+
+export const showModal = (modal) => ({
+  type: 'SHOW_MODAL',
+  modal
+});
+
+export const hideModal = () => ({
+  type: 'HIDE_MODAL'
+});

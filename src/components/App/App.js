@@ -3,6 +3,7 @@ import './App.css';
 
 import FooterContainer from '../../containers/FooterContainer';
 import HeaderContainer from '../../containers/HeaderContainer';
+import ModalerContainer from '../../containers/ModalerContainer';
 import Main from '../Main/Main';
 
 class App extends Component {
@@ -11,7 +12,8 @@ class App extends Component {
       <div className="app page--index">
         <HeaderContainer />
         <Main />
-        <FooterContainer/>
+        <FooterContainer />
+        <ModalerContainer />
       </div>
     );
   }

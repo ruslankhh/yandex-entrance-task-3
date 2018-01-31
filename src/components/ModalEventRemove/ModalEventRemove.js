@@ -8,15 +8,40 @@ import Modal from './../Modal/Modal';
 class ModalEventRemove extends Component {
   render() {
     const { block, elem } = createBlock(this.props);
-    const props = { ...this.props, mods: { center: true, ...this.props.mods } };
+    const {
+      event,
+      mods,
+      onModalButtonCloseClick,
+      removeEventMutate
+    } = this.props;
+
+    const modalProps = {
+      ...this.props,
+      mods: { center: true, ...mods }
+    };
+    const buttonProps = {
+      mods: { type: 'secondary', size: 'md' },
+      mix: 'grid__item'
+    };
+    const buttonCloseProps = {
+      ...buttonProps,
+      onClick: onModalButtonCloseClick
+    };
+    const buttonRemoveProps = {
+      ...buttonProps,
+      onClick: () => {
+        removeEventMutate({ variables: { id: event.id } });
+        onModalButtonCloseClick();
+      }
+    };
 
     return (
-      <Modal className={block('modal')} {...props}>
+      <Modal className={block('modal')} {...modalProps}>
         <img className={elem('image')} src={emoji1} width="40" height="40" alt="Встреча будет удалена безвозвратно"/>
         <h3 className={elem('title')}>Встреча будет<br />удалена безвозвратно</h3>
         <div className={elem('footer', {}, 'grid grid--margin-true grid--center')}>
-          <Button mods={{ type: 'secondary', size: 'md' }} mix="grid__item">Отмена</Button>
-          <Button to="/" mods={{ type: 'secondary', size: 'md' }} mix="grid__item">Удалить</Button>
+          <Button {...buttonCloseProps}>Отмена</Button>
+          <Button to="/" {...buttonRemoveProps}>Удалить</Button>
         </div>
       </Modal>
     );

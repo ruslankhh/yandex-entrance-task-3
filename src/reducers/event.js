@@ -1,10 +1,11 @@
-const event = (state = null, { type, event }) => {
-  switch (type) {
+const event = (state = null, action) => {
+  switch (action.type) {
     case 'SET_EVENT':
-      if (!event) {
+      if (!action && !action.event) {
         return null;
       }
 
+      const { event } = action;
       const date = event.date ? event.date : event.dateStart ?
         (new Date(event.dateStart)).toISOString().slice(0, 10) : null;
       const timeStart = event.timeStart ? event.timeStart : event.dateStart ?
