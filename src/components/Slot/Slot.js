@@ -24,7 +24,12 @@ class Slot extends Component {
       ...this.props.event
     };
 
-    const onClick = () => this.props.onSlotButtonClick(event);
+    const onButtonEventClick = () => {
+      this.props.onSlotButtonClick(event);
+    };
+    const onButtonTooltipOpenClick = () => {
+      this.props.onSlotButtonClick(event);
+    };
 
     return (
       <div className={block('slot', { mix: 'room-item__slot' })} style={slotStyles}>
@@ -33,7 +38,7 @@ class Slot extends Component {
             to="/event"
             mods={this.props.mods}
             mix={elem('button')}
-            onClick={onClick}
+            onClick={onButtonEventClick}
           >
             <div className={elem('button-text')}>+</div>
           </Button>
@@ -41,11 +46,11 @@ class Slot extends Component {
           <Button
             mods={this.props.mods}
             mix={elem('button')}
-            onClick={onClick}
+            onClick={onButtonTooltipOpenClick}
           />
         ))()}
         {this.props.event ? (() => (
-          <Tooltip mix={elem('tooltip')} onSlotButtonClick={onClick}>
+          <Tooltip mix={elem('tooltip')} onSlotButtonClick={onButtonEventClick}>
             <EventItem {...this.props.event} />
           </Tooltip>
         ))() : ''}

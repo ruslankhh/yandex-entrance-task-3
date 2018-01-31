@@ -8,6 +8,20 @@ import Timeline from '../Timeline/Timeline';
 class EventDiagram extends Component {
   render() {
     const { block, elem } = createBlock(this.props);
+    const { events, date, onSlotButtonClick, rooms } = this.props;
+    const floorsHash = rooms ? rooms.reduce((acc, room) => {
+      const floorRooms = acc[room.floor] ? acc[room.floor] : [];
+      return {
+        ...acc,
+        [room.floor]: [...floorRooms, room]
+      };
+    }, {}) : {};
+    const floors = Object.keys(floorsHash).map(key => ({
+      floor: key,
+      rooms: floorsHash[key]
+    }));
+
+    const roomsListProps = { events, date, onSlotButtonClick };
 
     return (
       <main className={block('body', null, 'event-diagram')}>
@@ -16,7 +30,9 @@ class EventDiagram extends Component {
             <DatePicker {...this.props} />
           </div>
           <div className={elem('sidebar-body')}>
-            <RoomsList {...this.props} />
+            {floors.map((floor, i) =>
+              <RoomsList key={i} {...floor} {...roomsListProps} />
+            )}
           </div>
         </div>
         <div className={elem('main')}>

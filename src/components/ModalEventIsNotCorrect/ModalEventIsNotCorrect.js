@@ -22,8 +22,8 @@ class ModalEventIsNotCorrect extends Component {
 
     return (
       <Modal className={block('modal')} {...modalProps}>
-        <img className={elem('image')} src={emoji3} width="40" height="40" alt="Все поля должны быть заполнены."/>
-        <h3 className={elem('title')}>Все поля<br />должны быть заполнены</h3>
+        <img className={elem('image')} src={emoji3} width="40" height="40" alt="Все поля должны быть заполнены правильно."/>
+        <h3 className={elem('title')}>Все поля<br />должны быть заполнены правильно</h3>
         <div className={elem('footer', {}, 'grid grid--margin-true grid--center')}>
           <Button {...buttonProps}>Хорошо</Button>
         </div>

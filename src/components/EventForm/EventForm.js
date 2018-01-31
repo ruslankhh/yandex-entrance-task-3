@@ -52,7 +52,7 @@ class EventForm extends Component {
     const inputDateProps = {
       mods: { size: 'md' },
       mix: 'input-group__item',
-      placeholder: 'mm/dd/yyyy',
+      placeholder: 'yyyy-mm-dd',
       defaultValue: event ? event.date : null,
       onChange: ({ target: { value }}) =>
         onInputChange({ ...event, date: value, room: null })

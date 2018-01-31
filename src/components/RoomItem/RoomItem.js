@@ -8,23 +8,36 @@ import ButtonCheckbox from './../ButtonCheckbox/ButtonCheckbox';
 class RoomItem extends Component {
   render() {
     const { block, elem } = createBlock(this.props);
-    const { event, onButtonCheckboxClick, room, isRoomChecked } = this.props;
+    const {
+      capacity,
+      date,
+      event,
+      events,
+      floor,
+      onButtonCheckboxClick,
+      onSlotButtonClick,
+      room,
+      isRoomChecked,
+      mods,
+      time,
+      title
+    } = this.props;
     const plural = createPluralTemplate('ru');
-    const n1 = this.props.capacity;
-    const capacityText = plural`${n1} {человек, человека, человек}`;
-    const n2 = this.props.floor;
-    const floorText = plural`${n2} {этаж}`;
+    const capacityText = capacity ? plural`${capacity} {человек, человека, человек}` : '';
+    const floorText = floor ? plural`${floor} {этаж}`: '';
     const onChange = () => {
       onButtonCheckboxClick({ ...event, room: isRoomChecked ? null : room })
     };
-    
-    return this.props.mods && this.props.mods.type === 'short' ? (
+
+    const slotsListProps = { date, events, onSlotButtonClick, room };
+
+    return mods && mods.type === 'short' ? (
       <div className={block('room-item')}>
-        <ButtonCheckbox {...this.props} onChange={onChange}>
+        <ButtonCheckbox onChange={onChange} {...this.props}>
           <div className={elem('body')}>
             <div className={elem('text')}>
-              <span className={elem('time')}>{this.props.time}</span>
-              <span className={elem('room')}>{this.props.title}</span>
+              <span className={elem('time')}>{time}</span>
+              <span className={elem('room')}>{title}</span>
               <span className={elem('text-separator')}> · </span>
               <span className={elem('floor')}>{floorText}</span>
             </div>
@@ -34,17 +47,12 @@ class RoomItem extends Component {
     ) : (
       <div className={block('room-item')}>
         <div className={elem('body')}>
-          <div className={elem('title')}>{this.props.title}</div>
+          <div className={elem('title')}>{title}</div>
           <div className={elem('text')}>
             <span className={elem('capacity')}>{capacityText}</span>
           </div>
         </div>
-        <SlotsList
-          date={this.props.date}
-          events={this.props.events}
-          onSlotButtonClick={this.props.onSlotButtonClick}
-          room={this.props.room}
-        />
+        <SlotsList {...slotsListProps} />
       </div>
     );
   }
