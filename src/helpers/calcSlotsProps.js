@@ -1,7 +1,8 @@
 export const calcSlotsProps = (props) => {
   const { date } = props;
+  const now = new Date();
   const HOUR = 60 * 60 * 1000;
-  const STOP = 100;
+  const STOP = 30;
   let slotsProps = [];
   let counter = 0;
 
@@ -28,25 +29,29 @@ export const calcSlotsProps = (props) => {
   let eventDateEnd = events && events[eventIndex] ?
     new Date(events[eventIndex].dateEnd) : '';
 
-  // TODO: Add `disabled: true` for slotProp which time is over
   while (dateStart < dateStop && counter < STOP) {
     let slotProp;
     let dateEndHour = new Date(dateEnd.getTime() + HOUR);
+    let slotDateEnd;
 
-    if (!eventDateStart || dateStart !== eventDateStart) {
-      let slotDateEnd = eventDateStart && eventDateStart <= dateEnd ?
-        eventDateStart : dateEnd;
+    if (!eventDateStart || dateStart < eventDateStart) {
+      slotDateEnd = eventDateStart && eventDateStart <= dateEnd &&
+        (dateStart >= now || eventDateStart <= now) ?
+        eventDateStart : now > dateStart && now <= dateEnd ?
+        now : dateEnd;
 
       slotProp = {
-        mods: { type: 'primary' },
+        mods: { type: 'primary', disabled: dateStart < now },
         dateStart,
         dateEnd: slotDateEnd,
         room: props.room
       };
 
       dateStart = slotDateEnd;
-      dateEnd = eventDateStart && eventDateStart <= dateEndHour ?
-        eventDateStart : dateEndHour;
+      dateEnd = eventDateStart && eventDateStart <= dateEndHour &&
+        (dateStart >= now || eventDateStart <= now) ?
+        eventDateStart : now > dateStart && now <= dateEndHour ?
+        now : dateEndHour;
     } else {
       slotProp = {
         mods: { type: 'secondary' },

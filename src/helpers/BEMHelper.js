@@ -1,8 +1,11 @@
 // BEMHelper
 
 class Block {
-  constructor(props) {
-    this.props = props;
+  constructor(props = {}) {
+    this.props = {
+      mods: { ...props.mods },
+      mix: [].concat(props.mix)
+    };
 
     this.block = this.block.bind(this);
     this.elem = this.elem.bind(this);
@@ -27,8 +30,15 @@ class Block {
     return classNames.filter(str => !!str).join(' ');
   }
 
-  block(blockName, props, classes) {
-    this.props = { ...this.props, ...props, blockName };
+  block(blockName, props = {}, classes) {
+    props = props ? props : {};
+    this.props = {
+      ...this.props,
+      ...props,
+      mods: { ...this.props.mods, ...props.mods },
+      mix: this.props.mix.concat(props.mix),
+      blockName
+    };
 
     return Block.compiler(blockName, this.props, classes);
   }

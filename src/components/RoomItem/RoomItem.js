@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { createBlock } from '../../helpers/BEMHelper';
 import { createPluralTemplate } from '../../helpers/pluralHelper';
+import { calcSlotsProps } from '../../helpers/calcSlotsProps';
 
 import SlotsList from './../SlotsList/SlotsList';
 import ButtonCheckbox from './../ButtonCheckbox/ButtonCheckbox';
@@ -25,13 +26,19 @@ class RoomItem extends Component {
     const plural = createPluralTemplate('ru');
     const capacityText = capacity ? plural`${capacity} {человек, человека, человек}` : '';
     const floorText = floor ? plural`${floor} {этаж}`: '';
+
     const onChange = () => {
       onButtonCheckboxClick({ ...event, room: isRoomChecked ? null : room })
     };
 
-    const slotsListProps = { date, events, onSlotButtonClick, room };
+    const isShort = mods && mods.type === 'short'
 
-    return mods && mods.type === 'short' ? (
+    const slots = !isShort ? calcSlotsProps(this.props) : null;
+    const slotsListProps = { date, events, onSlotButtonClick, room, slots };
+    const disabled = slots && slots
+      .every(({ mods: { type, disabled }}) => type === 'secondary' || disabled);
+
+    return isShort ? (
       <div className={block('room-item')}>
         <ButtonCheckbox onChange={onChange} {...this.props}>
           <div className={elem('body')}>
@@ -45,7 +52,7 @@ class RoomItem extends Component {
         </ButtonCheckbox>
       </div>
     ) : (
-      <div className={block('room-item')}>
+      <div className={block('room-item', { mods: { disabled } })}>
         <div className={elem('body')}>
           <div className={elem('title')}>{title}</div>
           <div className={elem('text')}>
