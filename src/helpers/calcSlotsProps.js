@@ -15,8 +15,8 @@ export const calcSlotsProps = (props) => {
   }) : [];
 
   const disableProps = [
-    { mods: { type: 'secondary', disabled: true } },
-    { mods: { type: 'secondary', disabled: true } }
+    { mods: { type: 'primary', disabled: true } },
+    { mods: { type: 'primary', disabled: true } }
   ];
 
   let dateStart = new Date(date.getTime() + 8 * HOUR);
@@ -48,28 +48,28 @@ export const calcSlotsProps = (props) => {
       };
 
       dateStart = slotDateEnd;
-      dateEnd = eventDateStart && eventDateStart <= dateEndHour &&
-        (dateStart >= now || eventDateStart <= now) ?
-        eventDateStart : now > dateStart && now <= dateEndHour ?
-        now : dateEndHour;
+      dateEnd = dateStart < dateEnd ? dateEnd : dateEndHour;
     } else {
+      slotDateEnd = eventDateEnd;
+
       slotProp = {
         mods: { type: 'secondary' },
         dateStart: eventDateStart,
-        dateEnd: eventDateEnd,
+        dateEnd: slotDateEnd,
         event: events[eventIndex],
         room: props.room
       };
 
-      dateStart = eventDateEnd;
-      dateEnd = eventDateEnd > dateEnd ? (
+      dateStart = slotDateEnd;
+      dateEnd = dateStart > dateEnd ? (
         new Date(
-          eventDateEnd.getFullYear(),
-          eventDateEnd.getMonth(),
-          eventDateEnd.getDate(),
-          eventDateEnd.getHours() + 1
+          dateStart.getFullYear(),
+          dateStart.getMonth(),
+          dateStart.getDate(),
+          dateStart.getHours() + 1
         )
       ) : dateEnd;
+      
       eventIndex = eventIndex + 1;
       eventDateStart = events[eventIndex] ?
         new Date(events[eventIndex].dateStart) : '';
