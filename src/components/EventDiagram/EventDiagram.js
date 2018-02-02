@@ -8,7 +8,7 @@ import Timeline from '../Timeline/Timeline';
 class EventDiagram extends Component {
   render() {
     const { block, elem } = createBlock(this.props);
-    const { events, date, onSlotButtonClick, rooms } = this.props;
+    const { events, date, dateNow, onSlotButtonClick, rooms } = this.props;
     const floorsHash = rooms ? rooms.reduce((acc, room) => {
       const floorRooms = acc[room.floor] ? acc[room.floor] : [];
       return {
@@ -21,7 +21,7 @@ class EventDiagram extends Component {
       rooms: floorsHash[key]
     }));
 
-    const roomsListProps = { events, date, onSlotButtonClick };
+    const roomsListProps = { events, date, dateNow, onSlotButtonClick };
 
     return (
       <main className={block('body', null, 'event-diagram')}>

@@ -7,7 +7,7 @@ import RoomItem from '../RoomItem/RoomItem';
 class RoomsList extends Component {
   render() {
     const { block, elem } = createBlock(this.props);
-    const { date, event, events, onSlotButtonClick, rooms, floor } = this.props;
+    const { date, dateNow, event, events, onSlotButtonClick, rooms, floor } = this.props;
     const plural = createPluralTemplate('ru');
     const n1 = floor ? floor : '';
     const title = floor ? plural`${n1} {этаж}` : '';
@@ -21,6 +21,7 @@ class RoomsList extends Component {
               .filter(event => event.room.id === room.id) : [];
             const roomProps = {
               date,
+              dateNow,
               event,
               events: roomEvents,
               mods: { content: true },

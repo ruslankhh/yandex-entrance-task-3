@@ -3,6 +3,11 @@ export const setDate = (date) => ({
   date
 });
 
+export const setDateNow = (dateNow) => ({
+  type: 'SET_DATE_NOW',
+  dateNow
+});
+
 export const incrementDate = () => ({
   type: 'INCREMENT_DATE'
 });

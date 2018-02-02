@@ -1,19 +1,21 @@
 import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
-import { incrementDate, decrementDate, setEvent } from '../actions';
+import { incrementDate, decrementDate, setEvent, setDateNow } from '../actions';
 import { APP_QUERY } from '../requests';
 
 import EventDiagram from '../components/EventDiagram/EventDiagram';
 
 const mapStateToProps = (state) => ({
   event: state.app.event,
-  date: state.app.date
+  date: state.app.date,
+  dateNow: state.app.dateNow
 });
 
 const mapDispatchToProps = {
   onDatePickerButtonLeftClick: decrementDate,
   onDatePickerButtonRightClick: incrementDate,
-  onSlotButtonClick: setEvent
+  onSlotButtonClick: setEvent,
+  setDateNow
 };
 
 const mapDataToProps = ({ ownProps, data }) => {
@@ -33,7 +35,7 @@ const mapDataToProps = ({ ownProps, data }) => {
   })
 };
 const options = ({ shouldPoll }) => ({
-  pollInterval: 1000,
+  pollInterval: 1000
 });
 
 const EventDiagramWithData = graphql(

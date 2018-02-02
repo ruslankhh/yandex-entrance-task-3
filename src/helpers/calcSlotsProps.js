@@ -1,6 +1,6 @@
 export const calcSlotsProps = (props) => {
-  const { date } = props;
-  const now = new Date();
+  const { date, dateNow } = props;
+  const now = new Date(dateNow);
   const HOUR = 60 * 60 * 1000;
   const STOP = 30;
   let slotsProps = [];
@@ -69,7 +69,7 @@ export const calcSlotsProps = (props) => {
           dateStart.getHours() + 1
         )
       ) : dateEnd;
-      
+
       eventIndex = eventIndex + 1;
       eventDateStart = events[eventIndex] ?
         new Date(events[eventIndex].dateStart) : '';

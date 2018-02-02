@@ -2,13 +2,6 @@ import React, { Component } from 'react';
 import { createBlock } from '../../helpers/BEMHelper';
 
 class Timeline extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      now: new Date()
-    };
-  }
-
   componentDidMount() {
     this.timerID = setInterval(() => this.tick(), 1000);
   }
@@ -18,17 +11,19 @@ class Timeline extends Component {
   }
 
   tick() {
-    this.setState({ now: new Date() });
+    this.props.setDateNow(new Date());
   }
 
   render() {
     const { block, elem } = createBlock(this.props);
+    const { dateNow } = this.props;
     const date = new Date(this.props.date);
-    const isToday = this.state.now.toDateString() === date.toDateString();
-    const time = this.state.now.getHours() * 60 + this.state.now.getMinutes();
+    const now = new Date(dateNow);
+    const isToday = now.toDateString() === date.toDateString();
+    const time = now.getHours() * 60 + now.getMinutes();
     const indicatorPosition = { left: ((66 / 1122) * (time - 7 * 60) / 60) * 100 };
     const indicatorStyles = { left: `${indicatorPosition.left}%` };
-    const timeString = this.state.now.toLocaleTimeString('ru').slice(0, -3);
+    const timeString = now.toLocaleTimeString('ru').slice(0, -3);
     const items = Array.from({ length: 17 }, (v, i) => 7 + i + 1);
 
 
